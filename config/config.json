@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "metracom-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/metracom/MetracomWebPart.js",
+          "manifest": "./src/webparts/metracom/MetracomWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "MetracomWebPartStrings": "lib/webparts/metracom/loc/{locale}.js"
+  }
+}

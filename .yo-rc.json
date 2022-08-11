@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.15.0",
+    "libraryName": "metracom",
+    "libraryId": "12644157-f41d-4e14-b063-731b9b026a6c",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "metracom",
+    "solutionShortDescription": "metracom description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
