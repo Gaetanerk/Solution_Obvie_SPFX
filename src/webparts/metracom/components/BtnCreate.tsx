@@ -12,7 +12,7 @@ import { DefaultButton } from '@fluentui/react/lib/Button';
 export function BtnCreate() {
      return (
         <div className={styles.btnCreate}>
-        <DefaultButton text="Créer une liste de réunion" onClick={handleClick} />
+        <DefaultButton text="Créer une liste de réunion" />
         </div>
     );
 }
