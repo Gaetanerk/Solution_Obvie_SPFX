@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { DefaultButton } from '@fluentui/react/lib/Button';
 import { IContextualMenuProps } from '@fluentui/react';
 
 const menuProps: IContextualMenuProps = {
@@ -15,14 +14,14 @@ const menuProps: IContextualMenuProps = {
         iconProps: { iconName: 'ConstructionCone' },
       },
       {
-        key: 'Finished',
-        text: 'Terminées',
-        iconProps: { iconName: 'CheckMark' },
-      },
-      {
         key: 'Late',
         text: 'En retard',
         iconProps: { iconName: 'Clock' },
+      },
+      {
+        key: 'Finished',
+        text: 'Terminées',
+        iconProps: { iconName: 'CheckMark' },
       },
     ],
   };
