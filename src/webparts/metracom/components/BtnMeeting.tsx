@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IContextualMenuProps } from '@fluentui/react';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 
 const menuProps: IContextualMenuProps = {
     items: [
