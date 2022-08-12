@@ -22,7 +22,7 @@ export default class Metracom extends React.Component<IMetracomProps, {}> {
           <BtnCreate />
           <br />
           <BtnMeeting />
-          <Form />
+          <Form context={this.props.context} description={this.props.description}/>
         </div>
       </section>
     );

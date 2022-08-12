@@ -12,6 +12,8 @@ import * as strings from 'MetracomWebPartStrings';
 import Metracom from './components/Metracom';
 import { IMetracomProps } from './components/IMetracomProps';
 
+import { spfi, SPFx } from "@pnp/sp";
+
 export interface IMetracomWebPartProps {
   description: string;
 }
@@ -29,7 +31,8 @@ export default class MetracomWebPart extends BaseClientSideWebPart<IMetracomWebP
         isDarkTheme: this._isDarkTheme,
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
-        userDisplayName: this.context.pageContext.user.displayName
+        userDisplayName: this.context.pageContext.user.displayName,
+        context: this.context
       }
     );
 
@@ -38,6 +41,7 @@ export default class MetracomWebPart extends BaseClientSideWebPart<IMetracomWebP
 
   protected onInit(): Promise<void> {
     this._environmentMessage = this._getEnvironmentMessage();
+    const sp = spfi().using(SPFx(this.context));
 
     return super.onInit();
   }

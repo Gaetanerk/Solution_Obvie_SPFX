@@ -4,4 +4,5 @@ export interface IMetracomProps {
   environmentMessage: string;
   hasTeamsContext: boolean;
   userDisplayName: string;
+  context: any;
 }
