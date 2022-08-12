@@ -5,21 +5,26 @@ import { spfi, SPFx } from "@pnp/sp";
 import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/items";
-import React, { useState } from 'react'
-
-const Form = () => {
-  const [formData, setFormData] = useState({
-    object: "",
-    dateHour: "",
-    orderDay: "",
-    organizer: "",
-    nameProject: "",
-    customer: "",
-    attendees: "",
-    status: ""
-  })
+import { useState } from 'react'
 
 export function Form(props) {
+  
+    const [formData, setFormData] = useState({
+      object: "",
+      dateHour: "",
+      orderDay: "",
+      organizer: "",
+      nameProject: "",
+      customer: "",
+      attendees: "",
+      status: ""
+    })
+  
+    const handleSubmit = (e) => {
+      e.preventDefault()
+      console.log(formData)
+  
+  }
 
   async function getList() {
     console.log(props.description);
@@ -30,17 +35,16 @@ export function Form(props) {
   }
     return (
         <form>
-          <TextField {(e) => setFormData({...formData, object: e.target.value})} value={formData.object} label="Objet" required />
-          <TextField label="Date et heure" required />
-          <TextField label="Ordre du jour" required />
-          <TextField label="Organisateur" required />
-          <TextField label="Nom du projet" required />
-          <TextField label="Client" required />
-          <TextField label="Participants" required />
-          <TextField label="Etat" required />
+          <TextField onChange={(e) => setFormData({...formData, object: e.currentTarget.value})} value={formData.object} label="Objet" required />
+          <TextField onChange={(e) => setFormData({...formData, dateHour: e.currentTarget.value})} value={formData.dateHour} label="Date et heure" required />
+          <TextField onChange={(e) => setFormData({...formData, orderDay: e.currentTarget.value})} value={formData.orderDay} label="Ordre du jour" required />
+          <TextField onChange={(e) => setFormData({...formData, organizer: e.currentTarget.value})} value={formData.organizer} label="Organisateur" required />
+          <TextField onChange={(e) => setFormData({...formData, nameProject: e.currentTarget.value})} value={formData.nameProject} label="Nom du projet" required />
+          <TextField onChange={(e) => setFormData({...formData, customer: e.currentTarget.value})} value={formData.customer} label="Client" required />
+          <TextField onChange={(e) => setFormData({...formData, attendees: e.currentTarget.value})} value={formData.attendees} label="Participants" required />
+          <TextField onChange={(e) => setFormData({...formData, status: e.currentTarget.value})} value={formData.status} label="Etat" required />
           <br />
-          <DefaultButton text="Valider le formulaire" onClick={getList}/>
+          <DefaultButton onClick={handleSubmit} text="Valider le formulaire" />
         </form>
     )
   };
-
