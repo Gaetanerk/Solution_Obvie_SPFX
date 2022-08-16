@@ -19,10 +19,21 @@ export function Form(props) {
       attendees: "",
       status: ""
     })
+    let inputValue = false;
+    if (formData.object.length > 0 
+      && formData.dateHour.length > 0  
+      && formData.orderDay.length > 0  
+      && formData.organizer.length > 0  
+      && formData.nameProject.length > 0  
+      && formData.customer.length > 0 
+      && formData.attendees.length > 0  
+      && formData.status.length > 0 ) {
+        inputValue = true;
+      }
   
     const handleSubmit = (e) => {
       e.preventDefault()
-      console.log(formData)
+      console.log(formData);
   
   }
 
@@ -44,7 +55,7 @@ export function Form(props) {
           <TextField onChange={(e) => setFormData({...formData, attendees: e.currentTarget.value})} value={formData.attendees} label="Participants" required />
           <TextField onChange={(e) => setFormData({...formData, status: e.currentTarget.value})} value={formData.status} label="Etat" required />
           <br />
-          <DefaultButton onClick={handleSubmit} text="Valider le formulaire" />
+          <DefaultButton onClick={handleSubmit} disabled={!inputValue ? true : false} text="Valider le formulaire" />
         </form>
     )
   };
