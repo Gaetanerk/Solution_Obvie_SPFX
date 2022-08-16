@@ -26,4 +26,20 @@
     color: #e02128;
     font-weight: 300;
   }
+  .formMeeting {
+    border: 2px solid #1e1e3e;
+    border-radius: 1em;
+    margin: 2em;
+    padding: 2em;
+}
+.inputForm {
+  margin: 1em;
+}
+.inputFormDisabled {
+  margin: 1em;
+  border: 1px solid black;
+}
+.btnSubmit {
+  margin: 1em;
+}
 }
