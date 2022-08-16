@@ -9,7 +9,6 @@ import "@pnp/sp/items";
 import { useState } from 'react'
 
 export function Form(props) {
-  
     const [formData, setFormData] = useState({
       status: "Nouvelle",
       object: "",
@@ -38,6 +37,8 @@ export function Form(props) {
       console.log(formData);
   }
 
+    
+
   async function getList() {
     console.log(props.description);
     console.log(props.context);
@@ -45,9 +46,18 @@ export function Form(props) {
     const items = await sp.web.lists.getByTitle("Liste de réunion").items();
     console.log(items);
   }
+    let [count, setCount] = useState(1);
+    if (count !%2) {
+      return (
+        <div>
+        <DefaultButton onClick={() => setCount(count + 1)} className={styles.btnCreate} text="Créer une liste de réunion" />
+        </div>
+      )}
+    else {
     return (
+      <div>
+      <DefaultButton onClick={() => setCount(count + 1)} className={styles.btnCreate} text="Annuler" />
         <form className={styles.formMeeting}>
-          <br />
           <TextField onChange={(e) => setFormData({...formData, status: e.currentTarget.value})} className={styles.inputFormDisabled} value={formData.status} disabled={true} />
           <TextField onChange={(e) => setFormData({...formData, object: e.currentTarget.value})} className={styles.inputForm} value={formData.object} placeholder="Objet" />
           <TextField onChange={(e) => setFormData({...formData, orderDay: e.currentTarget.value})} className={styles.inputForm} value={formData.orderDay} placeholder="Ordre du jour" />
@@ -58,6 +68,7 @@ export function Form(props) {
           <TextField onChange={(e) => setFormData({...formData, dateHour: e.currentTarget.value})} className={styles.inputForm} type="datetime-local" value={formData.dateHour} placeholder="Date" />
           <DefaultButton onClick={handleSubmit} className={styles.btnSubmit} disabled={!inputValue ? true : false} text="Valider le formulaire" />
         </form>
-    )
+        </div>
+        )
+    }
   };
-  //<DefaultButton onClick={handleSubmit} disabled={false}text="Valider le formulaire" />

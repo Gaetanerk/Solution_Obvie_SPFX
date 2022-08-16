@@ -31,7 +31,7 @@ export function BtnMeeting() {
   
     return (
         <DefaultButton
-          text="Réunion"
+          text="Voir les réunions"
           split
           splitButtonAriaLabel="See 4 options"
           aria-roledescription="split button"
