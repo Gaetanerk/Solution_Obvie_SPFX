@@ -1,4 +1,5 @@
 import * as React from 'react';
+import styles from './Metracom.module.scss';
 import { IContextualMenuProps } from '@fluentui/react';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 
@@ -36,6 +37,7 @@ export function BtnMeeting() {
           splitButtonAriaLabel="See 4 options"
           aria-roledescription="split button"
           menuProps={menuProps}
+          className={styles.btnMeeting}
         />
     );
   };

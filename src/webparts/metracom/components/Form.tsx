@@ -21,14 +21,7 @@ export function Form(props) {
     })
 
     let inputValue = false;
-    if (formData.status.length > 0 
-      && formData.object.length > 0 
-      && formData.orderDay.length > 0 
-      && formData.organizer.length > 0 
-      && formData.nameProject.length > 0 
-      && formData.customer.length > 0 
-      && formData.attendees.length > 0 
-      && formData.dateHour.length >0) {
+    if (formData.status.length > 0 && formData.object.length > 0 && formData.orderDay.length > 0 && formData.organizer.length > 0 && formData.nameProject.length > 0 && formData.customer.length > 0 && formData.attendees.length > 0 && formData.dateHour.length >0) {
         inputValue = true;
       }
 

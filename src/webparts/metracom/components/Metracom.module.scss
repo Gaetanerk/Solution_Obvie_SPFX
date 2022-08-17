@@ -12,6 +12,9 @@
 
 .welcome {
   text-align: center;
+  img {
+    width: 65%;
+  }
   .btnCreate {
     margin: 1em;
   }
@@ -41,5 +44,65 @@
   }
   .btnSubmit {
     margin: 1em;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .welcome img {
+    width: 75%;
+  }
+  .welcome h1 {
+    font-size: 2em;
+  }
+  .welcome h2 {
+    font-size: 1.5em;
+  }
+  .btnCreate {
+    width: 180px;
+    font-size: 0.9em;
+  }
+  .btnMeeting {
+    width: 180px;
+    font-size: 0.9em;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .welcome img {
+    width: 85%;
+  }
+  .welcome h1 {
+    font-size: 1.7em;
+  }
+  .welcome h2 {
+    font-size: 1.2em;
+  }
+  .btnCreate {
+    width: 150px;
+    font-size: 0.7em;
+  }
+  .btnMeeting {
+    width: 150px;
+    font-size: 0.7em;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .welcome img {
+    width: 100%;
+  }
+  .welcome h1 {
+    font-size: 1.3em;
+  }
+  .welcome h2 {
+    font-size: 0.9em;
+  }
+  .btnCreate {
+    width: 120px;
+    font-size: 0.5em;
+  }
+  .btnMeeting {
+    width: 120px;
+    font-size: 0.5em;
   }
 }
