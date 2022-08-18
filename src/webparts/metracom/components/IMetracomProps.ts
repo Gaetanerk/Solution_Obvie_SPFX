@@ -1,3 +1,5 @@
+//import { WebPartContext } from "@microsoft/sp-webpart-base";
+
 export interface IMetracomProps {
   description: string;
   isDarkTheme: boolean;
@@ -5,4 +7,5 @@ export interface IMetracomProps {
   hasTeamsContext: boolean;
   userDisplayName: string;
   context: any;
+  //spcontext:WebPartContext;
 }

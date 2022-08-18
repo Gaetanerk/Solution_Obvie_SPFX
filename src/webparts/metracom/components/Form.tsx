@@ -6,6 +6,7 @@ import { spfi, SPFx } from "@pnp/sp";
 import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/items";
+import { IItemAddResult } from "@pnp/sp/items";
 import { useState } from 'react'
 
 export function Form(props) {
@@ -19,26 +20,40 @@ export function Form(props) {
       attendees: "",
       dateHour: ""
     })
-
+    
     let inputValue = false;
     if (formData.status.length > 0 && formData.object.length > 0 && formData.orderDay.length > 0 && formData.organizer.length > 0 && formData.nameProject.length > 0 && formData.customer.length > 0 && formData.attendees.length > 0 && formData.dateHour.length >0) {
         inputValue = true;
       }
+      
+      const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log(formData);
+      }
+      
+      async function getList() {
+        //console.log(props.description);
+        //console.log(props.context);
+        const sp = spfi().using(SPFx(props.context));
+        const items = await sp.web.lists.getByTitle("Liste de réunion").items();
+        //console.log(items);
+      }
+      
+      async function addList() {
+        const sp = spfi().using(SPFx(props.context));
+        const iar: IItemAddResult = await sp.web.lists.getByTitle("Liste de réunion").items.add({
+          object: "Objet",
+          dateHour: "Date et heure",
+          orderDay: "Ordre du jour",
+          organizer: "Organisateur",
+          nameProject: "Nom du projet",
+          customer: "Client",
+          attendees: "Participants",
+          status: "État",
+        });
+        //console.log(iar);
+}
 
-    const handleSubmit = (e) => {
-      e.preventDefault()
-      console.log(formData);
-  }
-
-    
-
-  async function getList() {
-    console.log(props.description);
-    console.log(props.context);
-    const sp = spfi().using(SPFx(props.context));
-    const items = await sp.web.lists.getByTitle("Liste de réunion").items();
-    console.log(items);
-  }
     let [count, setCount] = useState(1);
     if (count !%2) {
       return (
@@ -46,10 +61,10 @@ export function Form(props) {
         <DefaultButton onClick={() => setCount(count + 1)} className={styles.btnCreate} text="Créer une liste de réunion" />
         </div>
       )}
-    else {
-    return (
-      <div>
-      <DefaultButton onClick={() => setCount(count + 1)} className={styles.btnCreate} text="Annuler" />
+      else {
+        return (
+          <div>
+        <DefaultButton onClick={() => setCount(count + 1)} className={styles.btnCreate} text="Annuler" />
         <form className={styles.formMeeting}>
           <TextField onChange={(e) => setFormData({...formData, status: e.currentTarget.value})} className={styles.inputFormDisabled} value={formData.status} disabled={true} />
           <TextField onChange={(e) => setFormData({...formData, object: e.currentTarget.value})} className={styles.inputForm} value={formData.object} placeholder="Objet" />
@@ -63,5 +78,5 @@ export function Form(props) {
         </form>
         </div>
         )
-    }
-  };
+      }
+    };

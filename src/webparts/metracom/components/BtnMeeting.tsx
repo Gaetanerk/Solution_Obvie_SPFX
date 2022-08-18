@@ -29,9 +29,14 @@ const menuProps: IContextualMenuProps = {
   };
 
 export function BtnMeeting() {
+
+  const handleMeeting = (e) => {
+    e.preventDefault()
+    console.log(BtnMeeting);
+}
   
     return (
-        <DefaultButton
+        <DefaultButton onClick={handleMeeting}
           text="Voir les réunions"
           split
           splitButtonAriaLabel="See 4 options"

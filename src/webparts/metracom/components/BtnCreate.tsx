@@ -4,12 +4,14 @@ import { DefaultButton } from '@fluentui/react/lib/Button';
 import { useState } from 'react';  
 
 export function BtnCreate(props) {
-    let [count, setCount] = useState(0);
-    console.log({count});
-
+    let [count, setCount] = useState(1);
+    if (count !%2) {
+      return (
+        <DefaultButton onClick={() => setCount(count + 1)} className={styles.btnCreate} text="Créer une liste de réunion" />
+      )}
+    else {
     return (
-        <div className={styles.btnCreate}>
-        <DefaultButton onClick={() => setCount(count + 1)} text="Créer une liste de réunion" />
-        </div>
+      <DefaultButton onClick={() => setCount(count + 1)} className={styles.btnCreate} text="Annuler" />
     );
+  }
 }

@@ -33,6 +33,7 @@ export default class MetracomWebPart extends BaseClientSideWebPart<IMetracomWebP
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
         userDisplayName: this.context.pageContext.user.displayName,
         context: this.context
+        //spcontext:this.context
       }
     );
 
