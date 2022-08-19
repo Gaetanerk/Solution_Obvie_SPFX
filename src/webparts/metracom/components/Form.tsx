@@ -6,7 +6,7 @@ import { spfi, SPFx } from "@pnp/sp";
 import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/items";
-import { IItemAddResult } from "@pnp/sp/items";
+import { PeoplePicker, PrincipalType } from "@pnp/spfx-controls-react/lib/PeoplePicker";
 import { useState } from 'react'
 
 export function Form(props) {
@@ -17,12 +17,17 @@ export function Form(props) {
       organizer: "",
       nameProject: "",
       customer: "",
-      attendees: "",
       dateHour: ""
     })
+
+    const [attendees, setAttendees] = useState([]);
     
+    React.useEffect(() => {
+      console.log(attendees)
+    })
+
     let inputValue = false;
-    if (formData.status.length > 0 && formData.object.length > 0 && formData.orderDay.length > 0 && formData.organizer.length > 0 && formData.nameProject.length > 0 && formData.customer.length > 0 && formData.attendees.length > 0 && formData.dateHour.length >0) {
+    if (formData.status.length > 0 && formData.object.length > 0 && formData.orderDay.length > 0 && formData.organizer.length > 0 && formData.nameProject.length > 0 && formData.customer.length > 0 && attendees.length > 0 && formData.dateHour.length >0) {
         inputValue = true;
       }
       
@@ -32,26 +37,43 @@ export function Form(props) {
       }
       
       async function getList() {
-        //console.log(props.description);
-        //console.log(props.context);
         const sp = spfi().using(SPFx(props.context));
         const items = await sp.web.lists.getByTitle("Liste de réunion").items();
-        //console.log(items);
       }
       
       async function addList() {
         const sp = spfi().using(SPFx(props.context));
-        const iar: IItemAddResult = await sp.web.lists.getByTitle("Liste de réunion").items.add({
-          object: "Objet",
-          dateHour: "Date et heure",
-          orderDay: "Ordre du jour",
-          organizer: "Organisateur",
-          nameProject: "Nom du projet",
-          customer: "Client",
-          attendees: "Participants",
-          status: "État",
+        const iar = await sp.web.lists.getByTitle("Liste de réunion").items.add({
+          Title: formData.object,
+          Dateetheure: formData.dateHour,
+          Ordredujour: formData.orderDay,
+          Organisateur: formData.organizer,
+          Nomduprojet: formData.nameProject,
+          Nomduclient: formData.customer,
+          //Participants: formData.attendees,
+          Etat: formData.status
+          //setFormData(
+          //  object = "";
+          //  orderDay = "";
+          //  organizer = "";
+          //  nameProject = "";
+          //  customer = "";
+          //  attendees = [];
+          //  dateHour = ""
+          //)
         });
-        //console.log(iar);
+        console.log(iar);
+}
+
+function onChangePeople(e) {
+
+  setAttendees([]);
+ 
+  e.forEach(ePeople => {
+    setAttendees(prevAttendees => [...prevAttendees, ePeople])
+    console.log("coucou v6")
+  });
+
 }
 
     let [count, setCount] = useState(1);
@@ -72,9 +94,18 @@ export function Form(props) {
           <TextField onChange={(e) => setFormData({...formData, organizer: e.currentTarget.value})} className={styles.inputForm} value={formData.organizer} placeholder="Organisateur" />
           <TextField onChange={(e) => setFormData({...formData, nameProject: e.currentTarget.value})} className={styles.inputForm} value={formData.nameProject} placeholder="Nom du projet" />
           <TextField onChange={(e) => setFormData({...formData, customer: e.currentTarget.value})} className={styles.inputForm} value={formData.customer} placeholder="Client" />
-          <TextField onChange={(e) => setFormData({...formData, attendees: e.currentTarget.value})} className={styles.inputForm} value={formData.attendees} placeholder="Participants" />
-          <TextField onChange={(e) => setFormData({...formData, dateHour: e.currentTarget.value})} className={styles.inputForm} type="datetime-local" value={formData.dateHour} placeholder="Date" />
-          <DefaultButton onClick={handleSubmit} className={styles.btnSubmit} disabled={!inputValue ? true : false} text="Valider le formulaire" />
+          <PeoplePicker
+          context={props.context}
+          showtooltip={true}
+          personSelectionLimit={20}
+          onChange={onChangePeople}
+          showHiddenInUI={false}
+          principalTypes={[PrincipalType.User]}
+          resolveDelay={1000}
+          placeholder="Participants"
+          />
+          <TextField onChange={(e) => setFormData({...formData, dateHour: e.currentTarget.value})} className={styles.inputFormDateHour} type="datetime-local" value={formData.dateHour} placeholder="Date" />
+          <DefaultButton onClick={addList} className={styles.btnSubmit} disabled={!inputValue ? true : false} text="Valider le formulaire" />
         </form>
         </div>
         )
