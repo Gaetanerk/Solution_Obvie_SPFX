@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styles from './Metracom.module.scss';
-import { IContextualMenuProps } from '@fluentui/react';
+import { IContextualMenuProps, Stack } from '@fluentui/react';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 
 const menuProps: IContextualMenuProps = {
@@ -29,20 +29,20 @@ const menuProps: IContextualMenuProps = {
   };
 
 export function BtnMeeting() {
-
   const handleMeeting = (e) => {
     e.preventDefault()
-    console.log(BtnMeeting);
 }
   
     return (
+    <Stack 
+    className={styles.btnMeeting}>
         <DefaultButton onClick={handleMeeting}
           text="Voir les réunions"
           split
           splitButtonAriaLabel="See 4 options"
           aria-roledescription="split button"
           menuProps={menuProps}
-          className={styles.btnMeeting}
         />
+    </Stack>
     );
   };

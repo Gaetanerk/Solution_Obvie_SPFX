@@ -62,7 +62,6 @@ export function Form(props) {
           //  dateHour = ""
           //)
         });
-        console.log(iar);
 }
 
 function onChangePeople(e) {
@@ -71,7 +70,6 @@ function onChangePeople(e) {
  
   e.forEach(ePeople => {
     setAttendees(prevAttendees => [...prevAttendees, ePeople])
-    console.log("coucou v6")
   });
 
 }
