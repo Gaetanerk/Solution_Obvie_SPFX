@@ -9,6 +9,11 @@ import "@pnp/sp/items";
 
 
 export function BtnMeeting(props) {
+  
+  async function getList() {
+    const sp = spfi().using(SPFx(props.context));
+    const items = await sp.web.lists.getByTitle("Liste de réunion").items();
+  }
 
 const menuProps: IContextualMenuProps = {
     items: [
@@ -16,21 +21,33 @@ const menuProps: IContextualMenuProps = {
         key: 'newMeeting',
         text: 'Nouvelle',
         iconProps: { iconName: 'Flag' },
+        onClick: function() {
+          console.log('clicked! Nouvelle')
+          },
       },
       {
         key: 'inProgress',
         text: 'En cours',
         iconProps: { iconName: 'ConstructionCone' },
+        onClick: function() {
+          console.log('clicked! En cours')
+          },
       },
       {
         key: 'Late',
         text: 'En retard',
         iconProps: { iconName: 'Clock' },
+        onClick: function() {
+          console.log('clicked! En retard')
+          },
       },
       {
         key: 'Finished',
         text: 'Terminées',
         iconProps: { iconName: 'CheckMark' },
+        onClick: function() {
+          console.log('clicked! Terminées')
+          },
       },
     ],
   };
@@ -41,32 +58,10 @@ console.log(menuProps.items[1])
 console.log(menuProps.items[2])
 console.log(menuProps.items[3])
 
-async function getList() {
-  const sp = spfi().using(SPFx(props.context));
-  const items = await sp.web.lists.getByTitle("Liste de réunion").items();
-}
-
-  const handleMeeting = (ev) => {
-    ev.preventDefault()
-    if (menuProps.items[0].onItemClick) {
-      console.log("Clicked newMeeting")
-    }
-    else if (menuProps.items[1].onItemClick) {
-      console.log("Clicked inProgress")
-    }
-    else if (menuProps.items[2].onItemClick) {
-      console.log("Clicked Late")
-    }
-    else {
-      console.log("Clicked Finished")
-    }
-}
-
     return (
     <Stack 
     className={styles.btnMeeting}>
         <DefaultButton 
-          onClick={handleMeeting}
           text="Voir les réunions"
           menuProps={menuProps}
         />
