@@ -8,76 +8,67 @@ import "@pnp/sp/lists";
 import "@pnp/sp/items";
 import { PeoplePicker, PrincipalType } from "@pnp/spfx-controls-react/lib/PeoplePicker";
 import { useState } from 'react'
+import { Items } from '@pnp/sp/items';
 
 export function Form(props) {
-    const [formData, setFormData] = useState({
-      status: "Nouvelle",
-      object: "",
-      orderDay: "",
-      organizer: "",
-      nameProject: "",
-      customer: "",
-      dateHour: ""
-    })
-
+  const [formData, setFormData] = useState({
+    status: "Nouvelle",
+    object: "",
+    orderDay: "",
+    organizer: "",
+    nameProject: "",
+    customer: "",
+    dateHour: ""
+  })
+    
     const [attendees, setAttendees] = useState([]);
     
     React.useEffect(() => {
       console.log(attendees)
     })
-
+    
     let inputValue = false;
     if (formData.status.length > 0 && formData.object.length > 0 && formData.orderDay.length > 0 && formData.organizer.length > 0 && formData.nameProject.length > 0 && formData.customer.length > 0 && attendees.length > 0 && formData.dateHour.length >0) {
-        inputValue = true;
-      }
-      
-      const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log(formData);
-      }
-      
-      async function getList() {
-        const sp = spfi().using(SPFx(props.context));
-        const items = await sp.web.lists.getByTitle("Liste de réunion").items();
-      }
-      
-      async function addList() {
-        const sp = spfi().using(SPFx(props.context));
-        const iar = await sp.web.lists.getByTitle("Liste de réunion").items.add({
+      inputValue = true;
+    }
+    
+    async function getList() {
+      const sp = spfi().using(SPFx(props.context));
+      const items = await sp.web.lists.getByTitle("Liste de réunion").items();
+    }
+    
+    async function addList() {
+      const sp = spfi().using(SPFx(props.context));
+      const iar = await sp.web.lists.getByTitle("Liste de réunion").items.add({
           Title: formData.object,
           Dateetheure: formData.dateHour,
           Ordredujour: formData.orderDay,
           Organisateur: formData.organizer,
           Nomduprojet: formData.nameProject,
           Nomduclient: formData.customer,
-          //Participants: formData.attendees,
-          Etat: formData.status
-          //setFormData(
-          //  object = "";
-          //  orderDay = "";
-          //  organizer = "";
-          //  nameProject = "";
-          //  customer = "";
-          //  attendees = [];
-          //  dateHour = ""
-          //)
+          //Participants: nameAttendees[],
+          Etat: formData.status,
         });
-}
+      }
+      
+      function onChangePeople(e) {
+        setAttendees([]);
+        e.forEach(ePeople => {
+          setAttendees(prevAttendees => [...prevAttendees, ePeople])
+        });
+      }
 
-function onChangePeople(e) {
+      if (attendees.length > 0) {
+        const nameAttendees = [];
+        for (let i = 0; i < attendees.length; i++)
+        nameAttendees.push(attendees[i].text)
+        console.log(nameAttendees)
+      }
 
-  setAttendees([]);
- 
-  e.forEach(ePeople => {
-    setAttendees(prevAttendees => [...prevAttendees, ePeople])
-  });
-
-}
-
-    let [count, setCount] = useState(1);
-    if (count !%2) {
-      return (
-        <div>
+      let [count, setCount] = useState(1);
+      if (count !%2) {
+        return (
+          <div>
         <DefaultButton onClick={() => setCount(count + 1)} className={styles.btnCreate} text="Créer une liste de réunion" />
         </div>
       )}
@@ -100,6 +91,7 @@ function onChangePeople(e) {
           showHiddenInUI={false}
           principalTypes={[PrincipalType.User]}
           resolveDelay={1000}
+          required={true}
           placeholder="Participants"
           />
           <TextField onChange={(e) => setFormData({...formData, dateHour: e.currentTarget.value})} className={styles.inputFormDateHour} type="datetime-local" value={formData.dateHour} placeholder="Date" />
