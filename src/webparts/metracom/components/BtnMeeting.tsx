@@ -22,7 +22,8 @@ const menuProps: IContextualMenuProps = {
         text: 'Nouvelle',
         iconProps: { iconName: 'Flag' },
         onClick: function() {
-          console.log('clicked! Nouvelle')
+          console.log('clicked! Nouvelle');
+          console.log({getList});
           },
       },
       {
@@ -55,8 +56,8 @@ const menuProps: IContextualMenuProps = {
 
 console.log(menuProps.items[0])
 console.log(menuProps.items[1])
-console.log(menuProps.items[2])
-console.log(menuProps.items[3])
+//console.log(menuProps.items[2])
+//console.log(menuProps.items[3])
 
     return (
     <Stack 
