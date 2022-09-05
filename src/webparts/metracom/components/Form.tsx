@@ -8,7 +8,7 @@ import "@pnp/sp/lists";
 import "@pnp/sp/items";
 import { PeoplePicker, PrincipalType } from "@pnp/spfx-controls-react/lib/PeoplePicker";
 import { useState } from 'react'
-import { Items } from '@pnp/sp/items';
+import "@pnp/sp/site-users/web";
 
 export function Form(props) {
   const [formData, setFormData] = useState({
@@ -36,9 +36,21 @@ export function Form(props) {
       const sp = spfi().using(SPFx(props.context));
       const items = await sp.web.lists.getByTitle("Liste de réunion").items();
     }
-    
+
+    async function getUserId(users) {
+      const sp = spfi().using(SPFx(props.context));
+      const userId = [];
+        for (let i = 0; i < users.length; i++) {
+        const user = await sp.web.siteUsers.getByLoginName(users[i].loginName)();
+        userId.push(user.Id)
+        }
+        return userId;
+    }    
+
     async function addList() {
       const sp = spfi().using(SPFx(props.context));
+      const userId = await getUserId(attendees)
+      console.log(userId);
       const iar = await sp.web.lists.getByTitle("Liste de réunion").items.add({
           Title: formData.object,
           Dateetheure: formData.dateHour,
@@ -46,11 +58,11 @@ export function Form(props) {
           Organisateur: formData.organizer,
           Nomduprojet: formData.nameProject,
           Nomduclient: formData.customer,
-          //Participants: nameAttendees[],
+          ParticipantsId: userId[0],
           Etat: formData.status,
         });
-      }
-      
+      }      
+
       function onChangePeople(e) {
         setAttendees([]);
         e.forEach(ePeople => {
@@ -58,12 +70,6 @@ export function Form(props) {
         });
       }
 
-      if (attendees.length > 0) {
-        const nameAttendees = [];
-        for (let i = 0; i < attendees.length; i++)
-        nameAttendees.push(attendees[i].text)
-        console.log(nameAttendees)
-      }
 
       let [count, setCount] = useState(1);
       if (count !%2) {

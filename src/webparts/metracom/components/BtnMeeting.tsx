@@ -13,25 +13,25 @@ export function BtnMeeting(props) {
   async function getList() {
     const sp = spfi().using(SPFx(props.context));
     const items = await sp.web.lists.getByTitle("Liste de réunion").items();
+    console.log(items);
   }
-
-const menuProps: IContextualMenuProps = {
+  
+  const menuProps: IContextualMenuProps = {
     items: [
       {
         key: 'newMeeting',
         text: 'Nouvelle',
         iconProps: { iconName: 'Flag' },
         onClick: function() {
-          console.log('clicked! Nouvelle');
-          console.log({getList});
-          },
+          console.log('Nouvelle');
+        },
       },
       {
         key: 'inProgress',
         text: 'En cours',
         iconProps: { iconName: 'ConstructionCone' },
         onClick: function() {
-          console.log('clicked! En cours')
+          console.log('En cours')
           },
       },
       {
@@ -39,7 +39,7 @@ const menuProps: IContextualMenuProps = {
         text: 'En retard',
         iconProps: { iconName: 'Clock' },
         onClick: function() {
-          console.log('clicked! En retard')
+          console.log('En retard')
           },
       },
       {
@@ -47,17 +47,14 @@ const menuProps: IContextualMenuProps = {
         text: 'Terminées',
         iconProps: { iconName: 'CheckMark' },
         onClick: function() {
-          console.log('clicked! Terminées')
+          console.log('Terminées')
           },
       },
     ],
   };
   
 
-console.log(menuProps.items[0])
-console.log(menuProps.items[1])
-//console.log(menuProps.items[2])
-//console.log(menuProps.items[3])
+console.log(menuProps.items)
 
     return (
     <Stack 
