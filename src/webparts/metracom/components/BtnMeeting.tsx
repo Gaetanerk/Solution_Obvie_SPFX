@@ -6,16 +6,10 @@ import { spfi, SPFx } from "@pnp/sp";
 import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/items";
+import { NewMeeting } from './NewMeeting';
 
 
 export function BtnMeeting(props) {
-  
-  async function getList() {
-    const sp = spfi().using(SPFx(props.context));
-    const items = await sp.web.lists.getByTitle("Liste de réunion").items();
-    console.log(items);
-  }
-  
   const menuProps: IContextualMenuProps = {
     items: [
       {
@@ -23,7 +17,7 @@ export function BtnMeeting(props) {
         text: 'Nouvelle',
         iconProps: { iconName: 'Flag' },
         onClick: function() {
-          console.log('Nouvelle');
+          console.log('Nouvelle')
         },
       },
       {
@@ -52,10 +46,6 @@ export function BtnMeeting(props) {
       },
     ],
   };
-  
-
-console.log(menuProps.items)
-
     return (
     <Stack 
     className={styles.btnMeeting}>
