@@ -10,14 +10,6 @@ import { PeoplePicker, PrincipalType } from "@pnp/spfx-controls-react/lib/People
 import { useState } from 'react'
 import "@pnp/sp/site-users/web";
 
-
-import { Toggle } from '@fluentui/react/lib/Toggle';
-import { Announced } from '@fluentui/react/lib/Announced';
-import { DetailsList, DetailsListLayoutMode, Selection, SelectionMode, IColumn } from '@fluentui/react/lib/DetailsList';
-import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
-import { mergeStyleSets } from '@fluentui/react/lib/Styling';
-import { TooltipHost } from '@fluentui/react';
-
 export function Form(props) {
   const [formData, setFormData] = useState({
     status: "Nouvelle",
@@ -45,6 +37,12 @@ export function Form(props) {
       const items = await sp.web.lists.getByTitle("Liste de réunion").items();
     }
 
+    async function getListAll() {    
+      const sp = spfi().using(SPFx(props.context));
+      const allItems: any[] = await sp.web.lists.getByTitle("Liste de réunion").items.getAll();
+      return allItems;
+      };
+
     async function getUserId(users) {
       const sp = spfi().using(SPFx(props.context));
       const userId = [];
@@ -54,34 +52,32 @@ export function Form(props) {
         }
         return userId;
     }
-    
 
     async function addList() {
       const sp = spfi().using(SPFx(props.context));
       const userId = await getUserId(attendees)
       console.log(userId);
       const iar = await sp.web.lists.getByTitle("Liste de réunion").items.add({
-          Title: formData.object,
-          Dateetheure: formData.dateHour,
-          Ordredujour: formData.orderDay,
-          Organisateur: formData.organizer,
-          Nomduprojet: formData.nameProject,
-          Nomduclient: formData.customer,
-          ParticipantsId: userId[0],
-          Etat: formData.status,
-        });
-        setFormData({...formData, object: "", orderDay: "", organizer: "", nameProject: "", customer: "", dateHour: ""})
-      }      
+        Title: formData.object,
+        Dateetheure: formData.dateHour,
+        Ordredujour: formData.orderDay,
+        Organisateur: formData.organizer,
+        Nomduprojet: formData.nameProject,
+        Nomduclient: formData.customer,
+        ParticipantsId: userId[0],
+        Etat: formData.status,
+      });
+      setFormData({...formData, object: "", orderDay: "", organizer: "", nameProject: "", customer: "", dateHour: ""});
+    }
 
       function onChangePeople(e) {
         setAttendees([]);
         e.forEach(ePeople => {
           setAttendees(prevAttendees => [...prevAttendees, ePeople])
         });
-      }
+      }        
 
-      console.log('5');
-      
+console.log('ok6');
 
       let [count, setCount] = useState(1);
       if (count !%2) {

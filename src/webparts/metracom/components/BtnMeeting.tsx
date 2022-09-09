@@ -2,14 +2,12 @@ import * as React from 'react';
 import styles from './Metracom.module.scss';
 import { IContextualMenuProps, Stack } from '@fluentui/react';
 import { DefaultButton } from '@fluentui/react/lib/Button';
-import { spfi, SPFx } from "@pnp/sp";
 import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/items";
-import { NewMeeting } from './NewMeeting';
 
 
-export function BtnMeeting(props) {
+export function BtnMeeting() {
   const menuProps: IContextualMenuProps = {
     items: [
       {
