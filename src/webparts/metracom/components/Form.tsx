@@ -20,6 +20,8 @@ export function Form(props) {
     customer: "",
     dateHour: ""
   })
+
+  let [count, setCount] = useState(1);
     
     const [attendees, setAttendees] = useState([]);
     
@@ -68,6 +70,7 @@ export function Form(props) {
         Etat: formData.status,
       });
       setFormData({...formData, object: "", orderDay: "", organizer: "", nameProject: "", customer: "", dateHour: ""});
+      setCount(count + 1);
     }
 
       function onChangePeople(e) {
@@ -77,9 +80,8 @@ export function Form(props) {
         });
       }        
 
-console.log('ok6');
+console.log('ok4');
 
-      let [count, setCount] = useState(1);
       if (count !%2) {
         return (
           <div>
