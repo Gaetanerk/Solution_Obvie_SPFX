@@ -39,12 +39,6 @@ export function Form(props) {
       const items = await sp.web.lists.getByTitle("Liste de réunion").items();
     }
 
-    async function getListAll() {    
-      const sp = spfi().using(SPFx(props.context));
-      const allItems: any[] = await sp.web.lists.getByTitle("Liste de réunion").items.getAll();
-      return allItems;
-      };
-
     async function getUserId(users) {
       const sp = spfi().using(SPFx(props.context));
       const userId = [];
@@ -80,7 +74,7 @@ export function Form(props) {
         });
       }        
 
-console.log('ok4');
+console.log('ok');
 
       if (count !%2) {
         return (

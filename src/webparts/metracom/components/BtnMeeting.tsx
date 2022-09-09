@@ -2,12 +2,24 @@ import * as React from 'react';
 import styles from './Metracom.module.scss';
 import { IContextualMenuProps, Stack } from '@fluentui/react';
 import { DefaultButton } from '@fluentui/react/lib/Button';
+import { spfi, SPFx } from "@pnp/sp";
 import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/items";
+import { useState } from 'react'
 
 
-export function BtnMeeting() {
+export function BtnMeeting(props) {
+  const [items, setItems]=useState([])
+  async function getList(status) {
+    const sp = spfi().using(SPFx(props.context));
+    const items = await sp.web.lists.getByTitle("Liste de réunion").items.filter("Etat eq '" + status + "'")();
+    items.forEach(item => {
+      setItems(prevItems => [...prevItems, item])
+    });
+    console.log(items);
+    
+  }
   const menuProps: IContextualMenuProps = {
     items: [
       {
@@ -15,7 +27,7 @@ export function BtnMeeting() {
         text: 'Nouvelle',
         iconProps: { iconName: 'Flag' },
         onClick: function() {
-          console.log('Nouvelle')
+        const getItems = getList("Nouvelle");
         },
       },
       {
@@ -23,7 +35,7 @@ export function BtnMeeting() {
         text: 'En cours',
         iconProps: { iconName: 'ConstructionCone' },
         onClick: function() {
-          console.log('En cours')
+          const getItems = getList("En cours");
           },
       },
       {
@@ -31,7 +43,7 @@ export function BtnMeeting() {
         text: 'En retard',
         iconProps: { iconName: 'Clock' },
         onClick: function() {
-          console.log('En retard')
+          const getItems = getList("En retard");
           },
       },
       {
@@ -39,18 +51,23 @@ export function BtnMeeting() {
         text: 'Terminées',
         iconProps: { iconName: 'CheckMark' },
         onClick: function() {
-          console.log('Terminées')
+          const getItems = getList("Terminée");
           },
       },
     ],
   };
     return (
+    <div>
     <Stack 
     className={styles.btnMeeting}>
         <DefaultButton 
           text="Voir les réunions"
           menuProps={menuProps}
         />
-    </Stack>
+          </Stack>
+          {items.map((item) =>
+          <h2>{item.Title}</h2>
+          )}
+          </div>
     );
-  };
+  };  

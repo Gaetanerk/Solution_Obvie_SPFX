@@ -18,7 +18,7 @@ export default class Metracom extends React.Component<IMetracomProps, {}> {
           <img src={require('../images/logoMetracom.png')} />
           <h1>Application Réunion Metracom</h1>
           <h2>Bonjour, {escape(userDisplayName)} !</h2>
-          <BtnMeeting />
+          <BtnMeeting context={this.props.context}/>
           <Form context={this.props.context}/>
         </div>
       </section>
