@@ -55,6 +55,34 @@
     margin: 2em;
   }
 }
+.objectMeeting {
+  color: #1e1e3e;
+  font-size: 1.8em;
+  margin: auto;
+  text-align: center;
+}
+.tableList {
+  margin: 2em 0 1em 0;
+  padding: 0.5em;
+  border: 2px solid #e02128;
+  border-radius: 10px;
+  width: 100%;
+}
+thead {
+  color: #1e1e3e;
+}
+.listMeeting {
+  text-align: center;
+  font-size: 1em;
+  font-weight: 600;
+}
+.headListMeeting {
+  font-size: 1.2em;
+  text-decoration: underline;
+}
+.btnDetails {
+  top: -1em;
+}
 
 @media screen and (max-width: 768px) {
   .welcome img {

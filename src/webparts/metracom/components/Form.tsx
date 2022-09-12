@@ -74,8 +74,6 @@ export function Form(props) {
         });
       }        
 
-console.log('ok');
-
       if (count !%2) {
         return (
           <div>
