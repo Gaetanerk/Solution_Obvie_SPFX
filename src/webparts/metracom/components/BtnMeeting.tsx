@@ -13,16 +13,21 @@ import { BtnDetails } from './BtnDetails';
 
 export function BtnMeeting(props) {
   const [items, setItems] = useState([]);
+  const newDate = [];
   async function getList(status) {
     const sp = spfi().using(SPFx(props.context));
     const items = await sp.web.lists.getByTitle("Liste de réunion").items.filter("Etat eq '" + status + "'")();
     items.forEach(item => {
       setItems(prevItems => [...prevItems, item])
-    });
-    console.log(items);
-  }
+      const date = new Date(item.Dateetheure);
+      const newDate = date.toLocaleString('fr-FR');
+      item.Dateetheure = newDate
+      console.log(item.Dateetheure);
+      console.log(newDate);
+    })
+  };
 
-  console.log('ok2');
+  console.log('ok');
 
   const menuProps: IContextualMenuProps = {
     items: [
@@ -33,8 +38,8 @@ export function BtnMeeting(props) {
         onClick: function() {
         setItems([]);
         const getItems = getList("Nouvelle");
-        },
       },
+    },
       {
         key: 'inProgress',
         text: 'En cours',
@@ -51,7 +56,7 @@ export function BtnMeeting(props) {
         onClick: function() {
           setItems([]);
           const getItems = getList("En retard");
-          },
+        },
       },
       {
         key: 'Finished',
@@ -60,18 +65,18 @@ export function BtnMeeting(props) {
         onClick: function() {
           setItems([]);
           const getItems = getList("Terminée");
-          },
+        },
       },
     ],
   };
-    return (
+  return (
     <div>
     <Stack 
     className={styles.btnMeeting}>
         <DefaultButton 
           text="Voir les réunions"
           menuProps={menuProps}
-        />
+          />
           </Stack>
           {items.map((item) =>
           <table className={styles.tableList}>
@@ -85,10 +90,10 @@ export function BtnMeeting(props) {
             </thead>
             <tbody>
               <tr className={styles.listMeeting}>
-              <td>{item.Title}</td>
-                <td>{item.Dateetheure}</td>
-                <td>{item.Ordredujour}</td>
-                <td>{item.Organisateur}</td>
+                <td width={"25%"}>{item.Title}</td>
+                <td width={"25%"}>{item.Dateetheure}</td>
+                <td width={"25%"}>{item.Ordredujour}</td>
+                <td width={"25%"}>{item.Organisateur}</td>
               </tr>
             </tbody>
             <thead>
@@ -100,10 +105,10 @@ export function BtnMeeting(props) {
           </thead>
           <tbody>
             <tr className={styles.listMeeting}>
-              <td>{item.Nomduprojet}</td>
-              <td>{item.Nomduclient}</td>
-              <td>{item.PaticipantsId}</td>
-              <td><BtnDetails /></td>
+              <td width={"25%"}>{item.Nomduprojet}</td>
+              <td width={"25%"}>{item.Nomduclient}</td>
+              <td width={"25%"}>{item.PaticipantsId}</td>
+              <td width={"25%"}><BtnDetails /></td>
             </tr>
           </tbody>
         </table>

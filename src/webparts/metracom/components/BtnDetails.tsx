@@ -9,10 +9,7 @@ import { useState } from 'react'
 import { BtnMeeting } from './BtnMeeting';
 
 export function BtnDetails() {
-    function displayNone (){
-        <BtnMeeting style={{display:'none'}} />
-    }
     return (
-        <DefaultButton onClick={displayNone} className={styles.btnDetails} text="Détails" />
+        <DefaultButton className={styles.btnDetails} text="Détails" />
     )
 }
