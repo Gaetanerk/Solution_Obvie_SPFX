@@ -6,29 +6,34 @@ import { spfi, SPFx } from "@pnp/sp";
 import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/items";
+import "@pnp/sp/site-users/web";
 import { useState } from 'react';
 import { BtnDetails } from './BtnDetails';
 
 
 
 export function BtnMeeting(props) {
+  
   const [items, setItems] = useState([]);
-  const newDate = [];
+  
   async function getList(status) {
     const sp = spfi().using(SPFx(props.context));
     const items = await sp.web.lists.getByTitle("Liste de réunion").items.filter("Etat eq '" + status + "'")();
+    const userName = await sp.web.siteUsers.getById(9)();
     items.forEach(item => {
-      const date = new Date(item.Dateetheure);
-      const newDate = date.toLocaleString('fr-FR');
-      item.Dateetheure = newDate
-      console.log(item.Dateetheure);
-      console.log(item.PaticipantsId);
-      console.log(newDate);
-      setItems(prevItems => [...prevItems, item])
+      //const userName = sp.web.siteUsers.getById(item.ParticipantsId).select('Title')();
+        item.ParticipantsId = userName.Title
+        console.log(userName.Title);
+        const date = new Date(item.Dateetheure);
+        const newDate = date.toLocaleString('fr-FR');
+        item.Dateetheure = newDate
+        setItems(prevItems => [...prevItems, item])
     })
   };
 
-  console.log('ok2');
+  
+  console.log(items);
+  console.log('ok');
 
   const menuProps: IContextualMenuProps = {
     items: [
@@ -86,7 +91,7 @@ export function BtnMeeting(props) {
         <DefaultButton 
           onClick={() => setItems([])}
           className={styles.btnRefresh}
-          text="Rafraîchir réunions"
+          text="Masquer réunions"
           style={{display: displayRefresh}} />
           </Stack>
           {items.map((item) =>
@@ -118,7 +123,7 @@ export function BtnMeeting(props) {
             <tr className={styles.listMeeting}>
               <td width={"25%"}>{item.Nomduprojet}</td>
               <td width={"25%"}>{item.Nomduclient}</td>
-              <td width={"25%"}>{item.PaticipantsId}</td>
+              <td width={"25%"}>{item.ParticipantsId}</td>
               <td width={"25%"}><BtnDetails /></td>
             </tr>
           </tbody>

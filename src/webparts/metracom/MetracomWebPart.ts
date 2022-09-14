@@ -16,10 +16,17 @@ import { spfi, SPFx } from "@pnp/sp";
 
 export interface IMetracomWebPartProps {
   description: string;
+  Email: string;
+  Id: number;
+  IsHiddenInUI: boolean;
+  IsShareByEmailGuestUser: boolean;
+  IsSiteAdmin: boolean;
+  LoginName: string;
+  Title: string;
 }
 
 export default class MetracomWebPart extends BaseClientSideWebPart<IMetracomWebPartProps> {
-
+  
   private _isDarkTheme: boolean = false;
   private _environmentMessage: string = '';
 
@@ -34,10 +41,10 @@ export default class MetracomWebPart extends BaseClientSideWebPart<IMetracomWebP
         userDisplayName: this.context.pageContext.user.displayName,
         context: this.context
       }
-    );
-
-    ReactDom.render(element, this.domElement);
-  }
+      );
+      
+      ReactDom.render(element, this.domElement);
+    }
 
   protected onInit(): Promise<void> {
     this._environmentMessage = this._getEnvironmentMessage();
