@@ -19,7 +19,7 @@ export function BtnMeeting(props) {
   async function getList(status) {
     const sp = spfi().using(SPFx(props.context));
     const items = await sp.web.lists.getByTitle("Liste de réunion").items.filter("Etat eq '" + status + "'")();
-    const userName = await sp.web.siteUsers.getById(9)();
+    const userName = await sp.web.siteUsers.getById(12)();
     items.forEach(item => {
       //const userName = sp.web.siteUsers.getById(item.ParticipantsId).select('Title')();
         item.ParticipantsId = userName.Title
