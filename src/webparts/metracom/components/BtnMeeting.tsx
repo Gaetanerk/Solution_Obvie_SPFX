@@ -18,16 +18,17 @@ export function BtnMeeting(props) {
     const sp = spfi().using(SPFx(props.context));
     const items = await sp.web.lists.getByTitle("Liste de réunion").items.filter("Etat eq '" + status + "'")();
     items.forEach(item => {
-      setItems(prevItems => [...prevItems, item])
       const date = new Date(item.Dateetheure);
       const newDate = date.toLocaleString('fr-FR');
       item.Dateetheure = newDate
       console.log(item.Dateetheure);
+      console.log(item.PaticipantsId);
       console.log(newDate);
+      setItems(prevItems => [...prevItems, item])
     })
   };
 
-  console.log('ok');
+  console.log('ok2');
 
   const menuProps: IContextualMenuProps = {
     items: [
@@ -36,10 +37,10 @@ export function BtnMeeting(props) {
         text: 'Nouvelle',
         iconProps: { iconName: 'Flag' },
         onClick: function() {
-        setItems([]);
-        const getItems = getList("Nouvelle");
+          setItems([]);
+          const getItems = getList("Nouvelle");
+        },
       },
-    },
       {
         key: 'inProgress',
         text: 'En cours',
@@ -69,6 +70,11 @@ export function BtnMeeting(props) {
       },
     ],
   };
+
+  let displayRefresh = "none";
+  if (items.length > 0) {
+    displayRefresh = "block"
+  }
   return (
     <div>
     <Stack 
@@ -77,6 +83,11 @@ export function BtnMeeting(props) {
           text="Voir les réunions"
           menuProps={menuProps}
           />
+        <DefaultButton 
+          onClick={() => setItems([])}
+          className={styles.btnRefresh}
+          text="Rafraîchir réunions"
+          style={{display: displayRefresh}} />
           </Stack>
           {items.map((item) =>
           <table className={styles.tableList}>
