@@ -2,7 +2,7 @@ import * as React from 'react';
 import styles from './Metracom.module.scss';
 import { IMetracomProps } from './IMetracomProps';
 import { escape } from '@microsoft/sp-lodash-subset';
-import { HomePage } from './HomePage';
+import { Welcome } from './Welcome';
 
 export default class Metracom extends React.Component<IMetracomProps, {}> {
   public render(): React.ReactElement<IMetracomProps> {
@@ -17,7 +17,7 @@ export default class Metracom extends React.Component<IMetracomProps, {}> {
           <img src={require('../images/logoMetracom.png')} />
           <h1>Application Réunion Metracom</h1>
           <h2>Bonjour, {escape(userDisplayName)} !</h2>
-          <HomePage context={this.props.context}/>
+          <Welcome context={this.props.context}/>
         </div>
       </section>
     );

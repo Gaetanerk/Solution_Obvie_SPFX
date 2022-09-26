@@ -7,7 +7,7 @@ export function HomePage(props) {
 
     return (
         <div className={styles.divWelcome}>
-            <BtnMeeting className={styles.btnMeeting} context={props.context}/>
+            <BtnMeeting className={styles.btnMeeting} context={props.context} screen={props.screen} setScreen={props.setScreen}/>
             <Form className={styles.formMeeting} context={props.context}/>
         </div>
     )

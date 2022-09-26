@@ -7,9 +7,13 @@ import "@pnp/sp/lists";
 import "@pnp/sp/items";
 import { useState } from 'react'
 
-export function BtnDetails() {
+export function BtnDetails(props) {
+
+    function changeScreen() {
+        props.setScreen('detail');
+    }
 
     return (
-        <DefaultButton text="Détails" />
+        <DefaultButton onClick={changeScreen} text="Détails" />
    )
 }

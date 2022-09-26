@@ -122,7 +122,7 @@ export function BtnMeeting(props) {
               <td width={"25%"}>{item.Nomduprojet}</td>
               <td width={"25%"}>{item.Nomduclient}</td>
               <td width={"25%"}>{item.ParticipantsId}</td>
-              <td width={"25%"}><BtnDetails /></td>
+              <td width={"25%"}><BtnDetails screen={props.screen} setScreen={props.setScreen}/></td>
             </tr>
           </tbody>
         </table>
