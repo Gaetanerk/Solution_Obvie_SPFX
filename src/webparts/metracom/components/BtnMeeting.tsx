@@ -26,6 +26,7 @@ export function BtnMeeting(props) {
         const newDate = date.toLocaleString('fr-FR');
         item.Dateetheure = newDate
         setItems(prevItems => [...prevItems, item])
+        
         }
       };
   

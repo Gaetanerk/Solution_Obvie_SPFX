@@ -1,5 +1,11 @@
 @import '~office-ui-fabric-react/dist/sass/References.scss';
 
+:global {
+  #workbenchPageContent, .CanvasComponent.LCS .CanvasZone {
+    max-width: 100% !important;
+  }
+}
+
 .metracom {
   overflow: hidden;
   padding: 1em;
@@ -13,7 +19,7 @@
 .welcome {
   text-align: center;
   img {
-    width: 65%;
+    width: 35%;
   }
   .divWelcome {
     display: block;
