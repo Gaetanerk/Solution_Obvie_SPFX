@@ -6,10 +6,10 @@ import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/items";
 import { useState } from 'react'
-import { BtnMeeting } from './BtnMeeting';
 
 export function BtnDetails() {
+
     return (
-        <DefaultButton className={styles.btnDetails} text="Détails" />
-    )
+        <DefaultButton text="Détails" />
+   )
 }

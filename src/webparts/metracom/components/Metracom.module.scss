@@ -26,6 +26,9 @@
     width: 220px;
     margin: auto;
   }
+  .btnMeetingDesactived {
+    display: none;
+  }
   .btnRefresh {
     top: 0.5em;
     width: 220px;
@@ -72,7 +75,7 @@
 .tableList {
   table-layout: fixed;
   margin: 2em 0 1em 0;
-  padding: 0.5em;
+  padding: 1em;
   border: 2px solid #e02128;
   border-radius: 10px;
   width: 100%;
@@ -88,12 +91,18 @@ thead {
   font-size: 1em;
   font-weight: 600;
 }
+.listMeeting td {
+  padding: 10px;
+}
 .headListMeeting {
   font-size: 1.2em;
   text-decoration: underline;
 }
 .btnDetails {
   top: -1em;
+}
+.btnDetailsDesactived {
+  visibility: hidden;
 }
 
 @media screen and (max-width: 768px) {

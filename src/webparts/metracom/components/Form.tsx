@@ -30,13 +30,15 @@ export function Form(props) {
     })
     
     let inputValue = false;
-    if (formData.status.length > 0 && formData.object.length > 0 && formData.orderDay.length > 0 && formData.organizer.length > 0 && formData.nameProject.length > 0 && formData.customer.length > 0 && attendees.length > 0 && formData.dateHour.length >0) {
+    if (formData.status.length > 0 
+      && formData.object.length > 0 
+      && formData.orderDay.length > 0 
+      && formData.organizer.length > 0 
+      && formData.nameProject.length > 0 
+      && formData.customer.length > 0 
+      && attendees.length > 0 
+      && formData.dateHour.length >0) {
       inputValue = true;
-    }
-    
-    async function getList() {
-      const sp = spfi().using(SPFx(props.context));
-      const items = await sp.web.lists.getByTitle("Liste de réunion").items();
     }
 
     async function getUserId(users) {
