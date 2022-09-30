@@ -26,12 +26,13 @@ export function BtnMeeting(props) {
         const newDate = date.toLocaleString('fr-FR');
         item.Dateetheure = newDate
         setItems(prevItems => [...prevItems, item])
-        
         }
       };
+
   
   console.log(items);
-  console.log('ok2');
+  console.log('ok1');
+  
 
   const menuProps: IContextualMenuProps = {
     items: [
@@ -73,12 +74,12 @@ export function BtnMeeting(props) {
       },
     ],
   };
-
+    
   let displayRefresh = "none";
   if (items.length > 0) {
     displayRefresh = "block"
   }
-
+  
   return (
     <div>
     <Stack 
@@ -97,10 +98,10 @@ export function BtnMeeting(props) {
           <table className={styles.tableList}>
             <thead>
               <tr className={styles.headListMeeting}>
-                <th>Objet</th>
-                <th>Date et Heure</th>
-                <th>Ordre du jour</th>
-                <th>Organisateur</th>
+                <th>Objet :</th>
+                <th>Date et Heure :</th>
+                <th>Ordre du jour :</th>
+                <th>Organisateur :</th>
               </tr>
             </thead>
             <tbody>
@@ -113,9 +114,9 @@ export function BtnMeeting(props) {
             </tbody>
             <thead>
             <tr className={styles.headListMeeting}>
-              <th>Nom du projet</th>
-              <th>Nom du client</th>
-              <th>Participants</th>
+              <th>Nom du projet :</th>
+              <th>Nom du client :</th>
+              <th>Participants :</th>
             </tr>
           </thead>
           <tbody>
@@ -123,7 +124,7 @@ export function BtnMeeting(props) {
               <td width={"25%"}>{item.Nomduprojet}</td>
               <td width={"25%"}>{item.Nomduclient}</td>
               <td width={"25%"}>{item.ParticipantsId}</td>
-              <td width={"25%"}><BtnDetails screen={props.screen} setScreen={props.setScreen}/></td>
+              <td width={"25%"}><BtnDetails context={props.context} idItem={item.Id} setIdItem={props.setIdItem} setScreen={props.setScreen} items={items} setItems={setItems}/></td>
             </tr>
           </tbody>
         </table>

@@ -4,7 +4,7 @@ import { DefaultButton } from '@fluentui/react/lib/Button';
 export function BtnReturnHome(props) {
 
     function changeScreen() {
-        
+
         props.setScreen('home');
     }
 

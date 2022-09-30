@@ -1,5 +1,10 @@
 import * as React from 'react';
-import styles from './Metracom.module.scss';
 
 export function ActionDecision() {
+        
+    return (
+        <div>
+            <h1>Liste Action Décision :</h1>
+        </div>
+    )
 }
