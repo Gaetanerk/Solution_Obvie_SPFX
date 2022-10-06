@@ -20,7 +20,7 @@
 .welcome {
   text-align: center;
   img {
-    width: 55%;
+    width: 50%;
   }
   .divWelcome {
     display: block;
@@ -69,6 +69,15 @@
   .inputFormDateHour {
     margin-top: 1em;
   }
+  .inputFormSummons {
+    margin: 1em 0;
+  }
+  .inputFormDesc {
+    margin: 1em 0;
+  }
+  .inputFormStatus {
+    margin: 1em 0;
+  }
   .btnSubmit {
     margin: 2em;
   }
@@ -110,6 +119,9 @@ thead {
 }
 .btnDetailsDesactived {
   visibility: hidden;
+}
+.btnAction {
+  margin: 0.5em;
 }
 
 @media screen and (max-width: 768px) {
