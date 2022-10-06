@@ -30,7 +30,7 @@ export function BtnMeeting(props) {
       };
 
   console.log(items);
-  console.log('ok4');
+  console.log('ok9');
 
   const menuProps: IContextualMenuProps = {
     items: [
@@ -41,6 +41,7 @@ export function BtnMeeting(props) {
         onClick: function() {
           setItems([]);
           const getItems = getList("Nouvelle");
+          props.setScreen('detail');
         },
       },
       {
@@ -50,6 +51,7 @@ export function BtnMeeting(props) {
         onClick: function() {
           setItems([]);
           const getItems = getList("En cours");
+          props.setScreen('detail');
         },
       },
       {
@@ -59,6 +61,7 @@ export function BtnMeeting(props) {
         onClick: function() {
           setItems([]);
           const getItems = getList("En retard");
+          props.setScreen('detail');
         },
       },
       {
@@ -68,6 +71,7 @@ export function BtnMeeting(props) {
         onClick: function() {
           setItems([]);
           const getItems = getList("Terminée");
+          props.setScreen('detail');
         },
       },
     ],

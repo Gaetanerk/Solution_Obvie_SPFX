@@ -9,6 +9,7 @@ import "@pnp/sp/items";
 import { PeoplePicker, PrincipalType } from "@pnp/spfx-controls-react/lib/PeoplePicker";
 import { useState } from 'react'
 import "@pnp/sp/site-users/web";
+import { useRef } from 'react';
 
 export function ActionDecision(props) {
         
@@ -20,19 +21,23 @@ export function ActionDecision(props) {
         validator: "",
         descriptionDecision: "",
         recipientDecision: "",
-        status: "",
+        status: "Nouvelle",
         termAction: "",
         dateStart: "",
         dateEnd: "",
-        ID: "",
+        ID: props.idItem,
         meeting: ""
       })
 
-    const [attendees, setAttendees] = useState([]);
+    const [attendeesTransmitter, setAttendeesTransmitter] = useState([]);
+    const [attendeesValidator, setAttendeesValidator] = useState([]);
+    const [attendeesRecipient, setAttendeesRecipient] = useState([]);
     let [count, setCount] = useState(1);
     
     React.useEffect(() => {
-      console.log(attendees)
+      console.log(attendeesTransmitter)
+      console.log(attendeesValidator)
+      console.log(attendeesRecipient)
     })
     
     let inputValue = false;
@@ -40,7 +45,9 @@ export function ActionDecision(props) {
       && formData.descriptionAction.length > 0
       && formData.summonsAction.length > 0
       && formData.descriptionDecision.length > 0
-      && attendees.length > 0 
+      && attendeesTransmitter.length > 0
+      && attendeesValidator.length > 0
+      && attendeesRecipient.length > 0
       && formData.status.length > 0
       && formData.termAction.length > 0
       && formData.dateStart.length  > 0
@@ -49,28 +56,52 @@ export function ActionDecision(props) {
       inputValue = true;
     }
 
-    async function getUserId(users) {
+    async function getUserIdTransmitter(users) {
       const sp = spfi().using(SPFx(props.context));
-      const userId = [];
+      const userIdTransmitter = [];
         for (let i = 0; i < users.length; i++) {
         const user = await sp.web.siteUsers.getByLoginName(users[i].loginName)();
-        userId.push(user.Id)
+        userIdTransmitter.push(user.Id)
         }
-        return userId;
+        return userIdTransmitter;
+    }
+
+    async function getUserIdValidator(users) {
+      const sp = spfi().using(SPFx(props.context));
+      const userIdValidator = [];
+        for (let i = 0; i < users.length; i++) {
+        const user = await sp.web.siteUsers.getByLoginName(users[i].loginName)();
+        userIdValidator.push(user.Id)
+        }
+        return userIdValidator;
+    }
+    
+    async function getUserIdRecipient(users) {
+      const sp = spfi().using(SPFx(props.context));
+      const userIdRecipient = [];
+        for (let i = 0; i < users.length; i++) {
+        const user = await sp.web.siteUsers.getByLoginName(users[i].loginName)();
+        userIdRecipient.push(user.Id)
+        }
+        return userIdRecipient;
     }
 
     async function addListAD() {
       const sp = spfi().using(SPFx(props.context));
-      const userId = await getUserId(attendees)
-      console.log(userId);
-      const iar = await sp.web.lists.getByTitle("Liste action décision").items.add({
+      const userIdTransmitter = await getUserIdTransmitter(attendeesTransmitter)
+      const userIdValidator = await getUserIdValidator(attendeesValidator)
+      const userIdRecipient = await getUserIdRecipient(attendeesRecipient)
+      console.log(userIdTransmitter);
+      console.log(userIdValidator);
+      console.log(userIdRecipient);
+      const iar = await sp.web.lists.getByTitle("Actiondecision").items.add({
         Title: formData.titleAction,
-        Descriptiondelaction: formData.descriptionAction,
-        Assignationdelaction: formData.summonsAction,
-        Emetteurdelaction: userId[0],
-        Valideurdelaction: userId[0],
+        Descriptionaction: formData.descriptionAction,
+        Assignationaction: formData.summonsAction,
+        Emetteuraction: userIdTransmitter,
+        Valideuraction: userIdValidator,
         Descriptiondecision: formData.descriptionDecision,
-        Destinatairedecision: userId[0],
+        Destinatairedecision: userIdRecipient,
         Etat: formData.status,
         Dureeaction: formData.termAction,
         Datedebut: formData.dateStart,
@@ -82,34 +113,54 @@ export function ActionDecision(props) {
       setCount(count + 1);
     }
 
-      function onChangePeople(e) {
-        setAttendees([]);
+      function onChangePeopleTransmitter(e) {
+        setAttendeesTransmitter([]);
         e.forEach(ePeople => {
-          setAttendees(prevAttendees => [...prevAttendees, ePeople])
+          setAttendeesTransmitter(prevAttendeesTransmitter => [...prevAttendeesTransmitter, ePeople])
         });
       }        
+
+      function onChangePeopleValidator(e) {
+        setAttendeesValidator([]);
+        e.forEach(ePeople => {
+          setAttendeesValidator(prevAttendeesValidator => [...prevAttendeesValidator, ePeople])
+        });
+      }        
+
+      function onChangePeopleRecipient(e) {
+        setAttendeesRecipient([]);
+        e.forEach(ePeople => {
+          setAttendeesRecipient(prevAttendeesRecipient => [...prevAttendeesRecipient, ePeople])
+        });
+      }
+
+      const ref = useRef(null);
+
+      const addAction = () => {
+      ref.current?.scrollIntoView({behavior: 'auto'});
+      setCount(count + 1);
+      };
 
     if (count !%2) {
       return (
         <div>
             <h1>Action Décision :</h1>
-            <DefaultButton onClick={() => setCount(count + 1)} className={styles.btnAction} text='Ajouter' />
-            <DefaultButton className={styles.btnAction} text='Modifier' />
+            <DefaultButton onClick={addAction} className={styles.btnAction} text='Ajouter' />
         </div>
     )
-    } else {
-      return (
-        <div>
+  } else {
+    return (
+      <div>
         <h1>Action Décision :</h1>
-        <DefaultButton onClick={() => setCount(count + 1)} className={styles.btnAction} text='Ajouter' />
-        <DefaultButton className={styles.btnAction} text='Modifier' />
-        <form className={styles.formMeeting}>
-        <TextField onChange={(e) => setFormData({...formData, titleAction: e.currentTarget.value})} className={styles.inputForm} value={formData.titleAction} placeholder="Titre de l'action" />
+        <DefaultButton onClick={() => setCount(count + 1)} className={styles.btnAction} text='Annuler' />
+        <form ref={ref} className={styles.formMeeting}>
+        <TextField onChange={(e) => setFormData({...formData, status: e.currentTarget.value})} className={styles.inputFormDisabled} value={formData.status} placeholder="Etat" disabled={true} />
+        <TextField onChange={(e) => setFormData({...formData, titleAction: e.currentTarget.value})} className={styles.inputForm} value={formData.titleAction} placeholder="Titre de l'action" autoFocus={true} />
         <TextField onChange={(e) => setFormData({...formData, descriptionAction: e.currentTarget.value})} className={styles.inputForm} value={formData.descriptionAction} placeholder="Description de l'action" />
         <PeoplePicker
           context={props.context}
           showtooltip={true}
-          onChange={onChangePeople}
+          onChange={onChangePeopleTransmitter}
           showHiddenInUI={false}
           principalTypes={[PrincipalType.User]}
           resolveDelay={1000}
@@ -120,7 +171,7 @@ export function ActionDecision(props) {
         <PeoplePicker
           context={props.context}
           showtooltip={true}
-          onChange={onChangePeople}
+          onChange={onChangePeopleValidator}
           showHiddenInUI={false}
           principalTypes={[PrincipalType.User]}
           resolveDelay={1000}
@@ -131,15 +182,14 @@ export function ActionDecision(props) {
         <PeoplePicker
           context={props.context}
           showtooltip={true}
-          onChange={onChangePeople}
+          onChange={onChangePeopleRecipient}
           showHiddenInUI={false}
           principalTypes={[PrincipalType.User]}
           resolveDelay={1000}
           required={true}
           placeholder="Destinataire décision"
         />
-        <TextField onChange={(e) => setFormData({...formData, status: e.currentTarget.value})} className={styles.inputFormStatus} value={formData.status} placeholder="Etat" />
-        <TextField onChange={(e) => setFormData({...formData, termAction: e.currentTarget.value})} className={styles.inputForm} value={formData.termAction} placeholder="Durée de l'action" />
+        <TextField onChange={(e) => setFormData({...formData, termAction: e.currentTarget.value})} className={styles.inputFormTerm} value={formData.termAction} placeholder="Durée de l'action" />
         <TextField onChange={(e) => setFormData({...formData, dateStart: e.currentTarget.value})} className={styles.inputForm} value={formData.dateStart} type="datetime-local" placeholder="Date de début" />
         <TextField onChange={(e) => setFormData({...formData, dateEnd: e.currentTarget.value})} className={styles.inputForm} value={formData.dateEnd} type="datetime-local" placeholder="Date de fin" />
         <TextField onChange={(e) => setFormData({...formData, meeting: e.currentTarget.value})} className={styles.inputForm} value={formData.meeting} placeholder="Réunion" />

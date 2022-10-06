@@ -9,7 +9,7 @@ export function DetailPage(props) {
         <div>
             <BtnReturnHome screen={props.screen} setScreen={props.setScreen} context={props.context}/>
             <InfoList context={props.context} idItem={props.idItem} setIdItem={props.setIdItem} items={props.items} setItems={props.setItems}/>
-            <ActionDecision screen={props.screen} setScreen={props.setScreen} context={props.context}/>
+            <ActionDecision context={props.context} idItem={props.idItem} setIdItem={props.setIdItem}/>
         </div>
     )
 }

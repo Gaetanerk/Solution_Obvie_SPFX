@@ -88,7 +88,7 @@ export function Form(props) {
         <DefaultButton onClick={() => setCount(count + 1)} className={styles.btnCreate} text="Annuler" />
         <form className={styles.formMeeting}>
           <TextField onChange={(e) => setFormData({...formData, status: e.currentTarget.value})} className={styles.inputFormDisabled} value={formData.status} disabled={true} />
-          <TextField onChange={(e) => setFormData({...formData, object: e.currentTarget.value})} className={styles.inputForm} value={formData.object} placeholder="Objet" />
+          <TextField onChange={(e) => setFormData({...formData, object: e.currentTarget.value})} className={styles.inputForm} value={formData.object} placeholder="Objet" autoFocus={true} />
           <TextField onChange={(e) => setFormData({...formData, orderDay: e.currentTarget.value})} className={styles.inputForm} value={formData.orderDay} placeholder="Ordre du jour" />
           <TextField onChange={(e) => setFormData({...formData, organizer: e.currentTarget.value})} className={styles.inputForm} value={formData.organizer} placeholder="Organisateur" />
           <TextField onChange={(e) => setFormData({...formData, nameProject: e.currentTarget.value})} className={styles.inputForm} value={formData.nameProject} placeholder="Nom du projet" />

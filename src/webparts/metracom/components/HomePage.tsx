@@ -2,7 +2,6 @@ import * as React from 'react';
 import styles from './Metracom.module.scss';
 import { BtnMeeting } from './BtnMeeting';
 import { Form } from './Form';
-import { useState } from 'react';
 
 export function HomePage(props) {
 
