@@ -137,10 +137,10 @@ export function ActionDecision(props) {
       const ref = useRef(null);
 
       const addAction = () => {
-      ref.current?.scrollIntoView({behavior: 'auto'});
+      ref.current?.scrollIntoView({behavior: 'smooth'});
       setCount(count + 1);
       };
-
+      
     if (count !%2) {
       return (
         <div>
@@ -198,4 +198,4 @@ export function ActionDecision(props) {
     </div>
       )
     }
-}
+  }

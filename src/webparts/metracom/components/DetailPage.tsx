@@ -8,7 +8,7 @@ export function DetailPage(props) {
     return (
         <div>
             <BtnReturnHome screen={props.screen} setScreen={props.setScreen} context={props.context}/>
-            <InfoList context={props.context} idItem={props.idItem} setIdItem={props.setIdItem} items={props.items} setItems={props.setItems}/>
+            <InfoList context={props.context} itemsDetail={props.itemsDetail} setItemsDetail={props.setItemsDetail} idItem={props.idItem} setIdItem={props.setIdItem}/>
             <ActionDecision context={props.context} idItem={props.idItem} setIdItem={props.setIdItem}/>
         </div>
     )

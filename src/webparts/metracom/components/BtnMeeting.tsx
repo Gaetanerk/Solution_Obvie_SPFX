@@ -30,7 +30,7 @@ export function BtnMeeting(props) {
       };
 
   console.log(items);
-  console.log('ok9');
+  console.log('ok');
 
   const menuProps: IContextualMenuProps = {
     items: [
@@ -41,7 +41,6 @@ export function BtnMeeting(props) {
         onClick: function() {
           setItems([]);
           const getItems = getList("Nouvelle");
-          props.setScreen('detail');
         },
       },
       {
@@ -51,7 +50,6 @@ export function BtnMeeting(props) {
         onClick: function() {
           setItems([]);
           const getItems = getList("En cours");
-          props.setScreen('detail');
         },
       },
       {
@@ -61,7 +59,6 @@ export function BtnMeeting(props) {
         onClick: function() {
           setItems([]);
           const getItems = getList("En retard");
-          props.setScreen('detail');
         },
       },
       {
@@ -71,7 +68,6 @@ export function BtnMeeting(props) {
         onClick: function() {
           setItems([]);
           const getItems = getList("Terminée");
-          props.setScreen('detail');
         },
       },
     ],
@@ -125,7 +121,7 @@ export function BtnMeeting(props) {
               <td width={"25%"}>{item.Nomduprojet}</td>
               <td width={"25%"}>{item.Nomduclient}</td>
               <td width={"25%"}>{item.ParticipantsId}</td>
-              <td width={"25%"}><BtnDetails context={props.context} idItem={item.Id} setIdItem={props.setIdItem} setScreen={props.setScreen} items={items} setItems={setItems}/></td>
+              <td width={"25%"}><BtnDetails context={props.context} idItem={item.Id} setIdItem={props.setIdItem} setScreen={props.setScreen} item={item} itemsDetail={props.itemsDetail} setItemsDetail={props.setItemsDetail}/></td>
             </tr>
           </tbody>
         </table>
