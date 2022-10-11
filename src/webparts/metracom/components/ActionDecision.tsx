@@ -164,8 +164,8 @@ export function ActionDecision(props) {
             <td width={"16.66%"}>{item.Title}</td>
             <td width={"16.66%"}>{item.Descriptiondelaction}</td>
             <td width={"16.66%"}>{item.Assignationdelaction}</td>
-            <td width={"16.66%"}>{item.Emetteurdelaction}</td>
-            <td width={"16.66%"}>{item.Valideurdelaction}</td>
+            <td width={"16.66%"}>{item.EmetteurdelactionId}</td>
+            <td width={"16.66%"}>{item.ValideurdelactionId}</td>
             <td width={"16.66%"}>{item.Etat}</td>
           </tr>
         </tbody>
@@ -182,7 +182,7 @@ export function ActionDecision(props) {
       <tbody>
         <tr className={styles.listMeeting}>
           <td width={"16.66%"}>{item.Descriptiond_x00e9_cision}</td>
-          <td width={"16.66%"}>{item.Destinataired_x00e9_cision}</td>
+          <td width={"16.66%"}>{item.Destinataired_x00e9_cisionId}</td>
           <td width={"16.66%"}>{item.Dur_x00e9_e}</td>
           <td width={"16.66%"}>{item.Dated_x00e9_but}</td>
           <td width={"16.66%"}>{item.Datedefin}</td>
