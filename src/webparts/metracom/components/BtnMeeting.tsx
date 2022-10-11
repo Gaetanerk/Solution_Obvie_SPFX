@@ -28,8 +28,8 @@ export function BtnMeeting(props) {
         setItems(prevItems => [...prevItems, item])
         }
       };
-
-  console.log('ok2');  
+      
+  console.log('ok7');  
 
   const menuProps: IContextualMenuProps = {
     items: [
