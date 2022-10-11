@@ -5,7 +5,6 @@ import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/items";
 import "@pnp/sp/site-users/web";
-import { loadTheme } from 'office-ui-fabric-react';
 
 export function BtnDetails(props) {
     

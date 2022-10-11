@@ -1,51 +1,9 @@
 import * as React from 'react';
-import { IContextualMenuProps } from '@fluentui/react';
-import { DefaultButton } from '@fluentui/react/lib/Button';
 import styles from './Metracom.module.scss';
-import { spfi, SPFx } from "@pnp/sp";
-import "@pnp/sp/webs";
-import "@pnp/sp/lists";
-import "@pnp/sp/items";
+import { BtnEditMeeting } from './BtnEditMeeting';
+import { BtnStatusMeeting } from './BtnStatusMeeting';
 
 export function InfoList(props) {
-
-async function updateStatus(status) {
-  const sp = spfi().using(SPFx(props.context));
-  const list = sp.web.lists.getByTitle("Liste de réunion");
-  const i = await list.items.getById(props.idItem).update({
-    Etat: status
-  });
-}
-
-    const menuProps: IContextualMenuProps = {
-        items: [
-          {
-            key: 'inProgress',
-            text: 'En cours',
-            iconProps: { iconName: 'ConstructionCone' },
-            onClick: function() {
-            const upStatus = updateStatus("En cours")
-            alert('En cours')}
-            
-            },
-          {
-            key: 'Late',
-            text: 'En retard',
-            iconProps: { iconName: 'Clock' },
-            onClick: function() {
-            const upStatus = updateStatus("En retard")
-            alert('En retard')}
-            },
-          {
-            key: 'Finished',
-            text: 'Terminée',
-            iconProps: { iconName: 'CheckMark' },
-            onClick: function() {
-            const upStatus = updateStatus("Terminée")
-            alert('Terminée')}
-            },
-        ],
-      };
 
     return (
         <div>
@@ -72,6 +30,7 @@ async function updateStatus(status) {
               <th>Nom du projet :</th>
               <th>Nom du client :</th>
               <th>Participants :</th>
+              <th><BtnEditMeeting /></th>
             </tr>
           </thead>
           <tbody>
@@ -79,7 +38,7 @@ async function updateStatus(status) {
               <td width={"25%"}>{props.itemsDetail.Nomduprojet}</td>
               <td width={"25%"}>{props.itemsDetail.Nomduclient}</td>
               <td width={"25%"}>{props.itemsDetail.ParticipantsId}</td>
-              <td width={"25%"}><DefaultButton text="Modifier l'état" menuProps={menuProps} /></td>
+              <td width={"25%"}><BtnStatusMeeting context={props.context} idItem={props.idItem} setIdItem={props.setIdItem} setScreen={props.setScreen}  /></td>
             </tr>
           </tbody>
         </table>

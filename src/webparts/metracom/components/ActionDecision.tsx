@@ -12,6 +12,7 @@ import "@pnp/sp/site-users/web";
 import { useRef } from 'react';
 import { IIconProps } from '@fluentui/react';
 import { ActionButton } from '@fluentui/react/lib/Button';
+import { BtnEditAD } from './BtnEditAD';
 
 export function ActionDecision(props) {
 
@@ -154,6 +155,17 @@ export function ActionDecision(props) {
             <th>Titre action :</th>
             <th>Description action :</th>
             <th>Assignation action :</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr className={styles.listMeeting}>
+            <td width={"33%"}>{item.Title}</td>
+            <td width={"33%"}>{item.Descriptiondelaction}</td>
+            <td width={"33%"}>{item.Assignationdelaction}</td>
+          </tr>
+        </tbody>
+        <thead>
+          <tr className={styles.headListMeeting}>
             <th>Émetteur action :</th>
             <th>Valideur action :</th>
             <th>État :</th>
@@ -161,12 +173,9 @@ export function ActionDecision(props) {
         </thead>
         <tbody>
           <tr className={styles.listMeeting}>
-            <td width={"16.66%"}>{item.Title}</td>
-            <td width={"16.66%"}>{item.Descriptiondelaction}</td>
-            <td width={"16.66%"}>{item.Assignationdelaction}</td>
-            <td width={"16.66%"}>{item.EmetteurdelactionId}</td>
-            <td width={"16.66%"}>{item.ValideurdelactionId}</td>
-            <td width={"16.66%"}>{item.Etat}</td>
+            <td width={"33%"}>{item.EmetteurdelactionId}</td>
+            <td width={"33%"}>{item.ValideurdelactionId}</td>
+            <td width={"33%"}>{item.Etat}</td>
           </tr>
         </tbody>
         <thead>
@@ -174,19 +183,26 @@ export function ActionDecision(props) {
           <th>Description décision :</th>
           <th>Destinataire décision :</th>
           <th>Durée :</th>
-          <th>Date de début :</th>
-          <th>Date de fin :</th>
-          <th></th>
         </tr>
       </thead>
       <tbody>
         <tr className={styles.listMeeting}>
-          <td width={"16.66%"}>{item.Descriptiond_x00e9_cision}</td>
-          <td width={"16.66%"}>{item.Destinataired_x00e9_cisionId}</td>
-          <td width={"16.66%"}>{item.Dur_x00e9_e}</td>
-          <td width={"16.66%"}>{item.Dated_x00e9_but}</td>
-          <td width={"16.66%"}>{item.Datedefin}</td>
-          <td width={"16.66%"}></td>
+          <td width={"33%"}>{item.Descriptiond_x00e9_cision}</td>
+          <td width={"33%"}>{item.Destinataired_x00e9_cisionId}</td>
+          <td width={"33%"}>{item.Dur_x00e9_e}</td>
+        </tr>
+      </tbody>
+      <thead>
+        <tr className={styles.headListMeeting}>
+          <th>Date de début :</th>
+          <th>Date de fin :</th>
+          <th><BtnEditAD /></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr className={styles.listMeeting}>
+          <td width={"33%"}>{item.Dated_x00e9_but}</td>
+          <td width={"33%"}>{item.Datedefin}</td>
         </tr>
       </tbody>
     </table>
@@ -207,53 +223,54 @@ export function ActionDecision(props) {
             <th>Titre action :</th>
             <th>Description action :</th>
             <th>Assignation action :</th>
-            <th>Émetteur action :</th>
-            <th>Valideur action :</th>
           </tr>
         </thead>
         <tbody>
           <tr className={styles.listMeeting}>
-            <td width={"20%"}>{item.Title}</td>
-            <td width={"20%"}>{item.Descriptiondelaction}</td>
-            <td width={"20%"}>{item.Assignationdelaction}</td>
-            <td width={"20%"}>{item.Emetteurdelaction}</td>
-            <td width={"20%"}>{item.Valideurdelaction}</td>
+            <td width={"33%"}>{item.Title}</td>
+            <td width={"33%"}>{item.Descriptiondelaction}</td>
+            <td width={"33%"}>{item.Assignationdelaction}</td>
+          </tr>
+        </tbody>
+        <thead>
+          <tr className={styles.headListMeeting}>
+            <th>Émetteur action :</th>
+            <th>Valideur action :</th>
+            <th>État :</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr className={styles.listMeeting}>
+            <td width={"33%"}>{item.EmetteurdelactionId}</td>
+            <td width={"33%"}>{item.ValideurdelactionId}</td>
+            <td width={"33%"}>{item.Etat}</td>
           </tr>
         </tbody>
         <thead>
         <tr className={styles.headListMeeting}>
-          <th></th>
           <th>Description décision :</th>
           <th>Destinataire décision :</th>
-          <th>État :</th>
-          <th></th>
+          <th>Durée :</th>
         </tr>
       </thead>
       <tbody>
         <tr className={styles.listMeeting}>
-          <td width={"20%"}></td>
-          <td width={"20%"}>{item.Descriptiond_x00e9_cision}</td>
-          <td width={"20%"}>{item.Destinataired_x00e9_cision}</td>
-          <td width={"20%"}>{item.Etat}</td>
-          <td width={"20%"}></td>
+          <td width={"33%"}>{item.Descriptiond_x00e9_cision}</td>
+          <td width={"33%"}>{item.Destinataired_x00e9_cisionId}</td>
+          <td width={"33%"}>{item.Dur_x00e9_e}</td>
         </tr>
       </tbody>
       <thead>
         <tr className={styles.headListMeeting}>
-          <th></th>
           <th>Date de début :</th>
           <th>Date de fin :</th>
-          <th></th>
-          <th></th>
+          <th><BtnEditAD /></th>
         </tr>
       </thead>
       <tbody>
         <tr className={styles.listMeeting}>
-          <td width={"20%"}></td>
-          <td width={"20%"}>{item.Dated_x00e9_but}</td>
-          <td width={"20%"}>{item.Datedefin}</td>
-          <td width={"20%"}></td>
-          <td width={"20%"}>{item.Datedefin}</td>
+          <td width={"33%"}>{item.Dated_x00e9_but}</td>
+          <td width={"33%"}>{item.Datedefin}</td>
         </tr>
       </tbody>
     </table>
