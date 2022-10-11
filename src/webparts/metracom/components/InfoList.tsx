@@ -2,8 +2,20 @@ import * as React from 'react';
 import { IContextualMenuProps } from '@fluentui/react';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import styles from './Metracom.module.scss';
+import { spfi, SPFx } from "@pnp/sp";
+import "@pnp/sp/webs";
+import "@pnp/sp/lists";
+import "@pnp/sp/items";
 
 export function InfoList(props) {
+
+async function updateStatus(status) {
+  const sp = spfi().using(SPFx(props.context));
+  const list = sp.web.lists.getByTitle("Liste de réunion");
+  const i = await list.items.getById(props.idItem).update({
+    Etat: status
+  });
+}
 
     const menuProps: IContextualMenuProps = {
         items: [
@@ -11,16 +23,22 @@ export function InfoList(props) {
             key: 'inProgress',
             text: 'En cours',
             iconProps: { iconName: 'ConstructionCone' },
+            onClick: function() {
+            const upStatus = updateStatus("En cours")}
             },
           {
             key: 'Late',
             text: 'En retard',
             iconProps: { iconName: 'Clock' },
+            onClick: function() {
+            const upStatus = updateStatus("En retard")}
             },
           {
             key: 'Finished',
-            text: 'Terminées',
+            text: 'Terminée',
             iconProps: { iconName: 'CheckMark' },
+            onClick: function() {
+            const upStatus = updateStatus("Terminée")}
             },
         ],
       };

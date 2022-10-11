@@ -29,7 +29,7 @@ export function BtnMeeting(props) {
         }
       };
 
-  console.log('ok');  
+  console.log('ok2');  
 
   const menuProps: IContextualMenuProps = {
     items: [
