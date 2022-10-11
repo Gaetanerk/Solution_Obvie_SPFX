@@ -15,8 +15,7 @@ import { ActionButton } from '@fluentui/react/lib/Button';
 
 export function ActionDecision(props) {
 
-  console.log(props.itemsAD);
-  console.log(props.idItem);
+  console.log(props.itemsAD);  
   
   const [formData, setFormData] = useState({
     titleAction: "",
@@ -148,6 +147,50 @@ export function ActionDecision(props) {
             <ActionButton onClick={addAction} iconProps={addFriendIcon}>
             Ajouter Action Décision
             </ActionButton>
+        {props.itemsAD.map((item) =>
+        <table className={styles.tableList}>
+        <thead>
+          <tr className={styles.headListMeeting}>
+            <th>Titre action :</th>
+            <th>Description action :</th>
+            <th>Assignation action :</th>
+            <th>Émetteur action :</th>
+            <th>Valideur action :</th>
+            <th>État :</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr className={styles.listMeeting}>
+            <td width={"16.66%"}>{item.Title}</td>
+            <td width={"16.66%"}>{item.Descriptiondelaction}</td>
+            <td width={"16.66%"}>{item.Assignationdelaction}</td>
+            <td width={"16.66%"}>{item.Emetteurdelaction}</td>
+            <td width={"16.66%"}>{item.Valideurdelaction}</td>
+            <td width={"16.66%"}>{item.Etat}</td>
+          </tr>
+        </tbody>
+        <thead>
+        <tr className={styles.headListMeeting}>
+          <th>Description décision :</th>
+          <th>Destinataire décision :</th>
+          <th>Durée :</th>
+          <th>Date de début :</th>
+          <th>Date de fin :</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr className={styles.listMeeting}>
+          <td width={"16.66%"}>{item.Descriptiond_x00e9_cision}</td>
+          <td width={"16.66%"}>{item.Destinataired_x00e9_cision}</td>
+          <td width={"16.66%"}>{item.Dur_x00e9_e}</td>
+          <td width={"16.66%"}>{item.Dated_x00e9_but}</td>
+          <td width={"16.66%"}>{item.Datedefin}</td>
+          <td width={"16.66%"}></td>
+        </tr>
+      </tbody>
+    </table>
+        )}
           </div>
     )
   } else {
@@ -157,6 +200,64 @@ export function ActionDecision(props) {
         <ActionButton onClick={addAction} iconProps={cancel}>
           Annuler
         </ActionButton>
+        {props.itemsAD.map((item) =>
+        <table className={styles.tableList}>
+        <thead>
+          <tr className={styles.headListMeeting}>
+            <th>Titre action :</th>
+            <th>Description action :</th>
+            <th>Assignation action :</th>
+            <th>Émetteur action :</th>
+            <th>Valideur action :</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr className={styles.listMeeting}>
+            <td width={"20%"}>{item.Title}</td>
+            <td width={"20%"}>{item.Descriptiondelaction}</td>
+            <td width={"20%"}>{item.Assignationdelaction}</td>
+            <td width={"20%"}>{item.Emetteurdelaction}</td>
+            <td width={"20%"}>{item.Valideurdelaction}</td>
+          </tr>
+        </tbody>
+        <thead>
+        <tr className={styles.headListMeeting}>
+          <th></th>
+          <th>Description décision :</th>
+          <th>Destinataire décision :</th>
+          <th>État :</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr className={styles.listMeeting}>
+          <td width={"20%"}></td>
+          <td width={"20%"}>{item.Descriptiond_x00e9_cision}</td>
+          <td width={"20%"}>{item.Destinataired_x00e9_cision}</td>
+          <td width={"20%"}>{item.Etat}</td>
+          <td width={"20%"}></td>
+        </tr>
+      </tbody>
+      <thead>
+        <tr className={styles.headListMeeting}>
+          <th></th>
+          <th>Date de début :</th>
+          <th>Date de fin :</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr className={styles.listMeeting}>
+          <td width={"20%"}></td>
+          <td width={"20%"}>{item.Dated_x00e9_but}</td>
+          <td width={"20%"}>{item.Datedefin}</td>
+          <td width={"20%"}></td>
+          <td width={"20%"}>{item.Datedefin}</td>
+        </tr>
+      </tbody>
+    </table>
+        )}
         <form className={styles.formMeeting}>
         <input ref={ref}  onChange={(e) => setFormData({...formData, status: e.currentTarget.value})} value={formData.status} style={{visibility: 'hidden'}} />
         <TextField onChange={(e) => setFormData({...formData, titleAction: e.currentTarget.value})} className={styles.inputForm} value={formData.titleAction} placeholder="Titre de l'action" autoFocus={true} />

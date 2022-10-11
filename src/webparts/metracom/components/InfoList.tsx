@@ -24,21 +24,25 @@ async function updateStatus(status) {
             text: 'En cours',
             iconProps: { iconName: 'ConstructionCone' },
             onClick: function() {
-            const upStatus = updateStatus("En cours")}
+            const upStatus = updateStatus("En cours")
+            alert('En cours')}
+            
             },
           {
             key: 'Late',
             text: 'En retard',
             iconProps: { iconName: 'Clock' },
             onClick: function() {
-            const upStatus = updateStatus("En retard")}
+            const upStatus = updateStatus("En retard")
+            alert('En retard')}
             },
           {
             key: 'Finished',
             text: 'Terminée',
             iconProps: { iconName: 'CheckMark' },
             onClick: function() {
-            const upStatus = updateStatus("Terminée")}
+            const upStatus = updateStatus("Terminée")
+            alert('Terminée')}
             },
         ],
       };
