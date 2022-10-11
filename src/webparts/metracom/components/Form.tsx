@@ -55,7 +55,6 @@ export function Form(props) {
     async function addList() {
       const sp = spfi().using(SPFx(props.context));
       const userId = await getUserId(attendees)
-      console.log(userId);
       const iar = await sp.web.lists.getByTitle("Liste de réunion").items.add({
         Title: formData.object,
         Dateetheure: formData.dateHour,
@@ -95,7 +94,7 @@ export function Form(props) {
           <div>
         <DefaultButton onClick={() => setCount(count + 1)} className={styles.btnCreate} text="Annuler" />
         <form className={styles.formMeeting}>
-          <TextField onChange={(e) => setFormData({...formData, status: e.currentTarget.value})} className={styles.inputFormDisabled} value={formData.status} disabled={true} />
+          <input onChange={(e) => setFormData({...formData, status: e.currentTarget.value})} value={formData.status} style={{visibility: 'hidden'}} />
           <TextField onChange={(e) => setFormData({...formData, object: e.currentTarget.value})} className={styles.inputForm} value={formData.object} placeholder="Objet" autoFocus={true} />
           <TextField onChange={(e) => setFormData({...formData, orderDay: e.currentTarget.value})} className={styles.inputForm} value={formData.orderDay} placeholder="Ordre du jour" />
           <TextField onChange={(e) => setFormData({...formData, organizer: e.currentTarget.value})} className={styles.inputForm} value={formData.organizer} placeholder="Organisateur" />

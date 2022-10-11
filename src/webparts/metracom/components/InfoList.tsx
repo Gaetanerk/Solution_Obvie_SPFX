@@ -23,12 +23,7 @@ export function InfoList(props) {
             iconProps: { iconName: 'CheckMark' },
             },
         ],
-      };      
-
-      console.log(props.idItem);
-      React.useEffect(() => {
-        console.log(props.itemsDetail)
-      })
+      };
 
     return (
         <div>

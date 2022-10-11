@@ -10,11 +10,13 @@ export function Welcome(props) {
     const [screen, setScreen] = useState('home');
 
     const [itemsDetail, setItemsDetail] = useState();
+    
+    const [itemsAD, setItemsAD] = useState([]);
 
     return (
         <div>
-            {screen === 'home' && <HomePage context={props.context} setScreen={setScreen} idItem={idItem} setIdItem={setIdItem} itemsDetail={itemsDetail} setItemsDetail={setItemsDetail}/>}
-            {screen === 'detail' && <DetailPage context={props.context} setScreen={setScreen} idItem={idItem} setIdItem={setIdItem} itemsDetail={itemsDetail} setItemsDetail={setItemsDetail}/>}
+            {screen === 'home' && <HomePage context={props.context} setScreen={setScreen} idItem={idItem} setIdItem={setIdItem} itemsDetail={itemsDetail} setItemsDetail={setItemsDetail} itemsAD={itemsAD} setItemsAD={setItemsAD} userDisplayName={props.userDisplayName}/>}
+            {screen === 'detail' && <DetailPage context={props.context} setScreen={setScreen} idItem={idItem} setIdItem={setIdItem} itemsDetail={itemsDetail} setItemsDetail={setItemsDetail} itemsAD={itemsAD} setItemsAD={setItemsAD}/>}
         </div>
     )
 }
