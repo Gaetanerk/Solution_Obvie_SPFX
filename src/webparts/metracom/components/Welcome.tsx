@@ -4,6 +4,7 @@ import { HomePage } from './HomePage';
 import { MeetingPage } from './MeetingPage';
 import { DetailPage } from './DetailPage';
 import { EditSuccess } from './EditSuccess';
+import { FormEditMeeting } from './FormEditMeeting';
 
 export function Welcome(props) {
 
@@ -27,6 +28,7 @@ export function Welcome(props) {
             {screen === 'meeting' && <MeetingPage context={props.context} items={items} setItems={setItems} count={count} setCount={setCount} setScreen={setScreen} idItem={idItem} setIdItem={setIdItem} itemsDetail={itemsDetail} setItemsDetail={setItemsDetail} itemsAD={itemsAD} setItemsAD={setItemsAD} idItemAD={idItemAD} setIdItemAD={setIdItemAD}/>}
             {screen === 'detail' && <DetailPage context={props.context} items={items} setItems={setItems} setScreen={setScreen} idItem={idItem} setIdItem={setIdItem} itemsDetail={itemsDetail} setItemsDetail={setItemsDetail} itemsAD={itemsAD} setItemsAD={setItemsAD} idItemAD={idItemAD} setIdItemAD={setIdItemAD}/>}
             {screen === 'editsuccess' && <EditSuccess context={props.context} setScreen={setScreen} idItem={idItem} setIdItem={setIdItem} idItemAD={idItemAD} setIdItemAD={setIdItemAD} />}
+            {screen === 'editmeeting' && <FormEditMeeting context={props.context} setScreen={setScreen} idItem={idItem} setIdItem={setIdItem} idItemAD={idItemAD} setIdItemAD={setIdItemAD} itemsDetail={itemsDetail} setItemsDetail={setItemsDetail} items={items} setItems={setItems} />}
         </div>
     )
 }

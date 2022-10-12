@@ -43,6 +43,7 @@ export function BtnDetails(props) {
     function displayDetail() {
         props.setIdItem();
         props.setIdItemAD();
+        props.setItems(props.items)
         props.setIdItem(props.idItem);
         props.setIdItemAD(props.idItemAD);
         props.setItemsDetail(props.item)
