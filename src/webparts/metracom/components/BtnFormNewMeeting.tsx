@@ -6,11 +6,11 @@ export function BtnFormNewMeeting(props) {
 
     if (props.count !%2) {
         return (
-        <DefaultButton onClick={() => props.setCount(props.count + 1)} className={styles.btnCreate} text="Créer une liste de réunion" />
+        <DefaultButton href='#formMeeting' onClick={() => props.setCount(props.count + 1)} className={styles.btnCreate} text="Créer une liste de réunion" />
       )}
       else {
         return (
-        <DefaultButton onClick={() => props.setCount(props.count + 1)} className={styles.btnCreate} text="Annuler" />
+        <DefaultButton id='formMeeting' onClick={() => props.setCount(props.count + 1)} className={styles.btnCreate} text="Annuler" />
         )
       }
 }

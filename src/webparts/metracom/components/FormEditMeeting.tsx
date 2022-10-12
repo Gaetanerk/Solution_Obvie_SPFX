@@ -23,10 +23,7 @@ export function FormEditMeeting(props) {
         customer: props.itemsDetail.Nomduclient,
         attendees: props.itemsDetail.ParticipantsId,
         dateHour: dateRebuild
-      })
-
-      console.log(props.itemsDetail.ID);
-      
+      })      
         
     const [attendees, setAttendees] = useState([]);
 

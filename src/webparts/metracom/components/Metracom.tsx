@@ -13,7 +13,6 @@ export default class Metracom extends React.Component<IMetracomProps, {}> {
     return (
       <section className={`${styles.metracom} ${hasTeamsContext ? styles.teams : ''}`}>
         <div className={styles.welcome}>
-          <img src={require('../images/logoMetracom.png')} />
           <Welcome context={this.props.context} userDisplayName={userDisplayName}/>
         </div>
       </section>

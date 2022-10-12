@@ -9,6 +9,7 @@ export function HomePage(props) {
 
     return (
         <div className={styles.divWelcome}>
+        <img src={require('../images/logoMetracom.png')} />
         <h1>Application Réunion Metracom</h1>
         <h2>Bonjour, {escape(props.userDisplayName)} !</h2>
             <BtnMeeting className={styles.btnMeeting} context={props.context} items={props.items} setItems={props.setItems} count={props.count} setCount={props.setCount} setScreen={props.setScreen} idItem={props.idItem} setIdItem={props.setIdItem} itemsDetail={props.itemsDetail} setItemsDetail={props.setItemsDetail} itemsAD={props.itemsAD} setItemsAD={props.setItemsAD} idItemAD={props.idItemAD} setIdItemAD={props.setIdItemAD}/>
