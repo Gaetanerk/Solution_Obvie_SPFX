@@ -88,9 +88,6 @@ export function ActionDecision(props) {
       const userIdTransmitter = await getUserIdTransmitter(attendeesTransmitter)
       const userIdValidator = await getUserIdValidator(attendeesValidator)
       const userIdRecipient = await getUserIdRecipient(attendeesRecipient)
-      console.log(userIdTransmitter);
-      console.log(userIdValidator);
-      console.log(userIdRecipient);
       const iar = await sp.web.lists.getByTitle("Actiondecision").items.add({
         Title: formData.titleAction,
         Descriptiondelaction: formData.descriptionAction,

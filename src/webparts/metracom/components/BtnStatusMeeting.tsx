@@ -7,9 +7,6 @@ import "@pnp/sp/lists";
 import "@pnp/sp/items";
 
 export function BtnStatusMeeting(props) {
-
-  console.log(props.idItem);
-  
     
     async function updateStatus(status) {
         const sp = spfi().using(SPFx(props.context));
