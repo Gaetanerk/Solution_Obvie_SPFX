@@ -11,12 +11,9 @@ import "@pnp/sp/items";
 import { BtnReturnMeeting } from './BtnReturnMeeting';
 
 export function FormEditMeeting(props) {
-
-    const date = new Date(props.itemsDetail.Dateetheure);
-    const newDate = date.toJSON();
-    newDate.toString()
-    const dateNewFormat = newDate.replace(":00.000Z", "")
-    props.itemsDetail.Dateetheure = dateNewFormat    
+    
+    const date = props.itemsDetail.Dateetheure;
+    const dateRebuild = date[6]+date[7]+date[8]+date[9]+"-"+date[3]+date[4]+"-"+date[0]+date[1]+"T"+date[11]+date[12]+":"+date[14]+date[15];
 
     const [formData, setFormData] = useState({
         object: props.itemsDetail.Title,
@@ -24,8 +21,12 @@ export function FormEditMeeting(props) {
         organizer: props.itemsDetail.Organisateur,
         nameProject: props.itemsDetail.Nomduprojet,
         customer: props.itemsDetail.Nomduclient,
-        dateHour: props.itemsDetail.Dateetheure
+        attendees: props.itemsDetail.ParticipantsId,
+        dateHour: dateRebuild
       })
+
+      console.log(props.itemsDetail.ID);
+      
         
     const [attendees, setAttendees] = useState([]);
 
@@ -43,7 +44,7 @@ export function FormEditMeeting(props) {
         const sp = spfi().using(SPFx(props.context));
         const userId = await getUserId(attendees)
         const list = sp.web.lists.getByTitle("Actiondecision");
-        const i = await list.items.getById(props.idItem).update({
+        const i = await list.items.getById(props.itemsDetail.ID).update({
             Title: formData.object,
             Dateetheure: formData.dateHour,
             Ordredujour: formData.orderDay,
@@ -53,6 +54,7 @@ export function FormEditMeeting(props) {
             ParticipantsId: userId[0],
         })
         setFormData({...formData, object: "", orderDay: "", organizer: "", nameProject: "", customer: "", dateHour: ""});
+        props.setScreen('editsuccess')
     }
 
     function onChangePeople(e) {
@@ -81,6 +83,7 @@ export function FormEditMeeting(props) {
           resolveDelay={1000}
           required={true}
           placeholder="Participants"
+          defaultSelectedUsers={[formData.attendees]}
           />
           <TextField onChange={(e) => setFormData({...formData, dateHour: e.currentTarget.value})} className={styles.inputFormDateHour} type="datetime-local" value={formData.dateHour} placeholder="Date" />
           <DefaultButton onClick={updateMeeting} className={styles.btnSubmit} text="Valider le formulaire" />
