@@ -7,8 +7,6 @@ import { BtnFormNewMeeting } from './BtnFormNewMeeting';
 
 export function HomePage(props) {
 
-  console.log(props.idItem);
-
     return (
         <div className={styles.divWelcome}>
         <h1>Application Réunion Metracom</h1>

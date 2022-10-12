@@ -4,8 +4,6 @@ import { BtnMeeting } from './BtnMeeting';
 import { BtnReturnHome } from './BtnReturnHome';
 
 export function MeetingPage(props) {
-    
-    console.log(props.idItem);
 
     return (
         <div>
