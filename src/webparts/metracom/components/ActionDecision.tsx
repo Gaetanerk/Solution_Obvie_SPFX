@@ -13,10 +13,9 @@ import { useRef } from 'react';
 import { IIconProps } from '@fluentui/react';
 import { ActionButton } from '@fluentui/react/lib/Button';
 import { BtnEditAD } from './BtnEditAD';
+import { BtnStatusAD } from './BtnStatusAD';
 
 export function ActionDecision(props) {
-
-  console.log(props.itemsAD);  
   
   const [formData, setFormData] = useState({
     titleAction: "",
@@ -203,6 +202,7 @@ export function ActionDecision(props) {
         <tr className={styles.listMeeting}>
           <td width={"33%"}>{item.Dated_x00e9_but}</td>
           <td width={"33%"}>{item.Datedefin}</td>
+          <td width={"33%"}><BtnStatusAD context={props.context} idItemAD={item.ID} setIdItemAD={props.setIdItemAD} setScreen={props.setScreen}/></td>
         </tr>
       </tbody>
     </table>
@@ -271,6 +271,7 @@ export function ActionDecision(props) {
         <tr className={styles.listMeeting}>
           <td width={"33%"}>{item.Dated_x00e9_but}</td>
           <td width={"33%"}>{item.Datedefin}</td>
+          <td width={"33%"}><BtnStatusAD context={props.context} idItemAD={item.ID} setIdItemAD={props.setIdItemAD} setScreen={props.setScreen}/></td>
         </tr>
       </tbody>
     </table>

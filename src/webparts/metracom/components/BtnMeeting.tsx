@@ -7,14 +7,11 @@ import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/items";
 import "@pnp/sp/site-users/web";
-import { useState } from 'react';
 import { BtnDetails } from './BtnDetails';
 
 
 
 export function BtnMeeting(props) {
-  
-  const [items, setItems] = useState([]);
   
   async function getList(status) {
     const sp = spfi().using(SPFx(props.context));
@@ -25,11 +22,12 @@ export function BtnMeeting(props) {
         const date = new Date(item.Dateetheure);
         const newDate = date.toLocaleString('fr-FR');
         item.Dateetheure = newDate
-        setItems(prevItems => [...prevItems, item])
+        props.setItems(prevItems => [...prevItems, item])
         }
       };
       
-  console.log('ok9');  
+  console.log('ok6');
+  
 
   const menuProps: IContextualMenuProps = {
     items: [
@@ -38,8 +36,9 @@ export function BtnMeeting(props) {
         text: 'Nouvelle',
         iconProps: { iconName: 'Flag' },
         onClick: function() {
-          setItems([]);
+          props.setItems([]);
           const getItems = getList("Nouvelle");
+          props.setScreen('meeting');
         },
       },
       {
@@ -47,8 +46,9 @@ export function BtnMeeting(props) {
         text: 'En cours',
         iconProps: { iconName: 'ConstructionCone' },
         onClick: function() {
-          setItems([]);
+          props.setItems([]);
           const getItems = getList("En cours");
+          props.setScreen('meeting');
         },
       },
       {
@@ -56,8 +56,9 @@ export function BtnMeeting(props) {
         text: 'En retard',
         iconProps: { iconName: 'Clock' },
         onClick: function() {
-          setItems([]);
+          props.setItems([]);
           const getItems = getList("En retard");
+          props.setScreen('meeting');
         },
       },
       {
@@ -65,17 +66,13 @@ export function BtnMeeting(props) {
         text: 'Terminées',
         iconProps: { iconName: 'CheckMark' },
         onClick: function() {
-          setItems([]);
+          props.setItems([]);
           const getItems = getList("Terminée");
+          props.setScreen('meeting');
         },
       },
     ],
   };
-    
-  let displayRefresh = "none";
-  if (items.length > 0) {
-    displayRefresh = "block"
-  }
   
   return (
     <div>
@@ -84,13 +81,8 @@ export function BtnMeeting(props) {
           text="Voir les réunions"
           menuProps={menuProps}
           />
-        <DefaultButton 
-          onClick={() => setItems([])}
-          className={styles.btnRefresh}
-          text="Masquer réunions"
-          style={{display: displayRefresh}} />
           </Stack>
-          {items.map((item) =>
+          {props.items.map((item) =>
           <table className={styles.tableList}>
             <thead>
               <tr className={styles.headListMeeting}>
@@ -120,7 +112,7 @@ export function BtnMeeting(props) {
               <td width={"25%"}>{item.Nomduprojet}</td>
               <td width={"25%"}>{item.Nomduclient}</td>
               <td width={"25%"}>{item.ParticipantsId}</td>
-              <td width={"25%"}><BtnDetails context={props.context} idItem={item.Id} setIdItem={props.setIdItem} setScreen={props.setScreen} item={item} itemsDetail={props.itemsDetail} setItemsDetail={props.setItemsDetail} itemsAD={props.itemsAD} setItemsAD={props.setItemsAD} /></td>
+              <td width={"25%"}><BtnDetails context={props.context} idItem={item.Id} setIdItem={props.setIdItem} idItemAD={props.idItemAD} setIdItemAD={props.setIdItemAD} setScreen={props.setScreen} item={item} itemsDetail={props.itemsDetail} setItemsDetail={props.setItemsDetail} itemsAD={props.itemsAD} setItemsAD={props.setItemsAD} /></td>
             </tr>
           </tbody>
         </table>

@@ -38,7 +38,7 @@ export function InfoList(props) {
               <td width={"25%"}>{props.itemsDetail.Nomduprojet}</td>
               <td width={"25%"}>{props.itemsDetail.Nomduclient}</td>
               <td width={"25%"}>{props.itemsDetail.ParticipantsId}</td>
-              <td width={"25%"}><BtnStatusMeeting context={props.context} idItem={props.idItem} setIdItem={props.setIdItem} setScreen={props.setScreen}  /></td>
+              <td width={"25%"}><BtnStatusMeeting context={props.context} idItem={props.idItem} setIdItem={props.setIdItem} setScreen={props.setScreen} /></td>
             </tr>
           </tbody>
         </table>

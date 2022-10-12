@@ -6,18 +6,15 @@ import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/items";
 
-export function BtnStatusMeeting(props) {
-
-  console.log(props.idItem);
-  
+export function BtnStatusAD(props) {
     
-    async function updateStatus(status) {
+    async function updateStatus(idAD) {
         const sp = spfi().using(SPFx(props.context));
-        const list = sp.web.lists.getByTitle("Liste de réunion");
-        const i = await list.items.getById(props.idItem).update({
-          Etat: status
+        const list = sp.web.lists.getByTitle("Actiondecision");
+        const i = await list.items.getById(props.idItemAD).update({
+          Etat: idAD
         });
-      }
+    }
 
     const menuProps: IContextualMenuProps = {
         items: [
@@ -27,31 +24,27 @@ export function BtnStatusMeeting(props) {
             iconProps: { iconName: 'ConstructionCone' },
             onClick: function() {
             const upStatus = updateStatus("En cours")
-            props.setIdItem(props.idItem)
-            props.setScreen('editsuccess')
-          }
-            
-            },
+            props.setIdItemAD(props.idItemAD)
+                props.setScreen('editsuccess')}
+          },
           {
             key: 'Late',
             text: 'En retard',
             iconProps: { iconName: 'Clock' },
             onClick: function() {
             const upStatus = updateStatus("En retard")
-            props.setIdItem(props.idItem)
-            props.setScreen('editsuccess')
-          }
-            },
+            props.setIdItemAD(props.idItemAD)
+                props.setScreen('editsuccess')}
+          },
           {
             key: 'Finished',
             text: 'Terminée',
             iconProps: { iconName: 'CheckMark' },
             onClick: function() {
             const upStatus = updateStatus("Terminée")
-            props.setIdItem(props.idItem)
-            props.setScreen('editsuccess')
-          }
-            },
+            props.setIdItemAD(props.idItemAD)
+            props.setScreen('editsuccess')}
+          },
         ],
       };
 

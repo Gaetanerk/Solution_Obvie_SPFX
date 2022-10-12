@@ -9,7 +9,6 @@ import "@pnp/sp/items";
 import { PeoplePicker, PrincipalType } from "@pnp/spfx-controls-react/lib/PeoplePicker";
 import { useState } from 'react'
 import "@pnp/sp/site-users/web";
-import { useRef } from 'react';
 
 export function Form(props) {
   const [formData, setFormData] = useState({
@@ -21,14 +20,8 @@ export function Form(props) {
     customer: "",
     dateHour: ""
   })
-
-  let [count, setCount] = useState(1);
     
     const [attendees, setAttendees] = useState([]);
-    
-    React.useEffect(() => {
-      console.log(attendees)
-    })
     
     let inputValue = false;
     if (formData.status.length > 0 
@@ -66,7 +59,7 @@ export function Form(props) {
         Etat: formData.status,
       });
       setFormData({...formData, object: "", orderDay: "", organizer: "", nameProject: "", customer: "", dateHour: ""});
-      setCount(count + 1);
+      props.setCount(props.count + 1);
     }
 
       function onChangePeople(e) {
@@ -74,25 +67,15 @@ export function Form(props) {
         e.forEach(ePeople => {
           setAttendees(prevAttendees => [...prevAttendees, ePeople])
         });
-      }   
-      
-      const ref = useRef(null);
+      }      
 
-      const addAction = () => {
-      ref.current?.scrollIntoView({behavior: 'smooth'});
-      setCount(count + 1);
-      };
-
-      if (count !%2) {
+      if (props.count !%2) {
         return (
-          <div>
-        <DefaultButton onClick={addAction} className={styles.btnCreate} text="Créer une liste de réunion" />
-        </div>
+          <div></div>
       )}
       else {
         return (
-          <div>
-        <DefaultButton onClick={() => setCount(count + 1)} className={styles.btnCreate} text="Annuler" />
+        <div>
         <form className={styles.formMeeting}>
           <input onChange={(e) => setFormData({...formData, status: e.currentTarget.value})} value={formData.status} style={{visibility: 'hidden'}} />
           <TextField onChange={(e) => setFormData({...formData, object: e.currentTarget.value})} className={styles.inputForm} value={formData.object} placeholder="Objet" autoFocus={true} />
@@ -110,7 +93,6 @@ export function Form(props) {
           resolveDelay={1000}
           required={true}
           placeholder="Participants"
-          ref={ref}
           />
           <TextField onChange={(e) => setFormData({...formData, dateHour: e.currentTarget.value})} className={styles.inputFormDateHour} type="datetime-local" value={formData.dateHour} placeholder="Date" />
           <DefaultButton onClick={addList} className={styles.btnSubmit} disabled={!inputValue ? true : false} text="Valider le formulaire" />

@@ -4,7 +4,7 @@ import { DefaultButton } from '@fluentui/react/lib/Button';
 export function EditSuccess(props) {
 
     function displayEditSuccess() {
-        props.setScreen('detail');
+        props.setScreen('detail')
     }
 
     return (

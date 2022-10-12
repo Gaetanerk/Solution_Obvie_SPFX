@@ -35,13 +35,16 @@ export function BtnDetails(props) {
             const newDateEnd = dateEnd.toLocaleString('fr-FR');
             itemListAD.Dated_x00e9_but = newDateStart
             itemListAD.Datedefin = newDateEnd
+            props.setIdItemAD(itemListAD.ID)
             props.setItemsAD(prevItemsListAD => [...prevItemsListAD, itemListAD])
             }
           };          
 
     function displayDetail() {
         props.setIdItem();
+        props.setIdItemAD();
         props.setIdItem(props.idItem);
+        props.setIdItemAD(props.idItemAD);
         props.setItemsDetail(props.item)
         props.setItemsAD(props.itemsAD)
         const getItemsListAD = getListAD(props.idItem)
