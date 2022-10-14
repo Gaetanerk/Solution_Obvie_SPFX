@@ -11,6 +11,6 @@ export function BtnReturnMeeting(props) {
     }
 
     return (
-        <DefaultButton onClick={changeScreen} className={styles.btnReturnHome} text="Retour à l'accueil" />
+        <DefaultButton onClick={changeScreen} className={styles.btnReturnHome} text="Retour aux détails" />
     )
 }

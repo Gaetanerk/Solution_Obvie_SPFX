@@ -40,7 +40,7 @@ export function FormEditMeeting(props) {
     async function updateMeeting() {
         const sp = spfi().using(SPFx(props.context));
         const userId = await getUserId(attendees)
-        const list = sp.web.lists.getByTitle("Actiondecision");
+        const list = sp.web.lists.getByTitle("Liste de réunion");
         const i = await list.items.getById(props.itemsDetail.ID).update({
             Title: formData.object,
             Dateetheure: formData.dateHour,

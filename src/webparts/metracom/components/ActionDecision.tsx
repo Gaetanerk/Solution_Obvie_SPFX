@@ -9,7 +9,6 @@ import "@pnp/sp/items";
 import { PeoplePicker, PrincipalType } from "@pnp/spfx-controls-react/lib/PeoplePicker";
 import { useState } from 'react'
 import "@pnp/sp/site-users/web";
-import { useRef } from 'react';
 import { IIconProps } from '@fluentui/react';
 import { ActionButton } from '@fluentui/react/lib/Button';
 import { BtnEditAD } from './BtnEditAD';
@@ -126,13 +125,6 @@ export function ActionDecision(props) {
         setAttendeesRecipient(prevAttendeesRecipient => [...prevAttendeesRecipient, ePeople])
       });
       }
-      
-      const ref = useRef(null);
-      
-      const addAction = () => {
-        ref.current?.scrollIntoView({behavior: 'smooth'});
-        setCount(count + 1);
-      };
 
       const addFriendIcon: IIconProps = { iconName: 'Add' };   
       const cancel: IIconProps = { iconName: 'Cancel' };   
@@ -141,7 +133,7 @@ export function ActionDecision(props) {
         return (
           <div>
             <h1>Action Décision :</h1>
-            <ActionButton onClick={addAction} iconProps={addFriendIcon}>
+            <ActionButton onClick={() =>setCount(count + 1)} iconProps={addFriendIcon}>
             Ajouter Action Décision
             </ActionButton>
         {props.itemsAD.map((item) =>
@@ -192,7 +184,7 @@ export function ActionDecision(props) {
         <tr className={styles.headListMeeting}>
           <th>Date de début :</th>
           <th>Date de fin :</th>
-          <th><BtnEditAD /></th>
+          <th><BtnEditAD context={props.context} setScreen={props.setScreen} itemsAD={props.itemsAD} setItemsAD={props.setItemsAD} itemsDetailAD={item} setItemsDetailAD={props.setItemsDetailAD} /></th>
         </tr>
       </thead>
       <tbody>
@@ -210,7 +202,7 @@ export function ActionDecision(props) {
     return (
       <div>
         <h1>Action Décision :</h1>
-        <ActionButton onClick={addAction} iconProps={cancel}>
+        <ActionButton onClick={() =>setCount(count + 1)} iconProps={cancel}>
           Annuler
         </ActionButton>
         {props.itemsAD.map((item) =>
@@ -261,7 +253,7 @@ export function ActionDecision(props) {
         <tr className={styles.headListMeeting}>
           <th>Date de début :</th>
           <th>Date de fin :</th>
-          <th><BtnEditAD /></th>
+          <th><BtnEditAD context={props.context} items={props.items} setItems={props.setItems} itemsDetailAD={item} setItemsDetailAD={props.setItemsDetailAD} setScreen={props.setScreen} idItem={props.idItem} setIdItem={props.setIdItem} itemsDetail={props.itemsDetail} setItemsDetail={props.setItemsDetail}itemsAD={props.itemsAD} setItemsAD={props.setItemsAD} idItemAD={props.idItemAD} setIdItemAD={props.setIdItemAD}/></th>
         </tr>
       </thead>
       <tbody>
@@ -274,7 +266,7 @@ export function ActionDecision(props) {
     </table>
         )}
         <form className={styles.formMeeting}>
-        <input ref={ref}  onChange={(e) => setFormData({...formData, status: e.currentTarget.value})} value={formData.status} style={{visibility: 'hidden'}} />
+        <input onChange={(e) => setFormData({...formData, status: e.currentTarget.value})} value={formData.status} style={{visibility: 'hidden'}} />
         <TextField onChange={(e) => setFormData({...formData, titleAction: e.currentTarget.value})} className={styles.inputForm} value={formData.titleAction} placeholder="Titre de l'action" autoFocus={true} />
         <TextField onChange={(e) => setFormData({...formData, descriptionAction: e.currentTarget.value})} className={styles.inputForm} value={formData.descriptionAction} placeholder="Description de l'action" />
         <PeoplePicker
@@ -318,16 +310,3 @@ export function ActionDecision(props) {
       )
     }
   }
-  /* pour l'option modifier
-
-  import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
-  
-  const options: IChoiceGroupOption[] = [
-    { key: 'newMeeting', text: 'Nouvelle', iconProps: { iconName: 'Flag' } },
-    { key: 'inProgress', text: 'En cours', iconProps: { iconName: 'ConstructionCone' } },
-    { key: 'Late', text: 'En retard', iconProps: { iconName: 'Clock' } },
-    { key: 'Finished', text: 'Terminée', iconProps: { iconName: 'CheckMark' } },
-  ];
-  
-  <ChoiceGroup styles={{ flexContainer : { display : "block" } }} label="État" defaultSelectedKey="newMeeting" options={options} />
-  */
