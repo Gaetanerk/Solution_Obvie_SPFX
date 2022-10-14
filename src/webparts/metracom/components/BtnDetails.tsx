@@ -38,7 +38,7 @@ export function BtnDetails(props) {
             props.setIdItemAD(itemListAD.ID)
             props.setItemsAD(prevItemsListAD => [...prevItemsListAD, itemListAD])
             }
-          };          
+          };
 
     function displayDetail() {
         props.setIdItem();
@@ -49,7 +49,6 @@ export function BtnDetails(props) {
         props.setItemsDetail(props.item)
         props.setItemsAD(props.itemsAD)
         const getItemsListAD = getListAD(props.idItem)
-        props.setItemsAD([])
         props.setScreen('detail');
     }
 
