@@ -10,7 +10,8 @@ export function Search(props) {
         <div>
             <BtnReturnHome context={props.context} 
                            screen={props.screen} setScreen={props.setScreen} 
-                           items={props.items} setItems={props.setItems}/>
+                           items={props.items} setItems={props.setItems}
+                           itemsAD={props.itemsAD} setItemsAD={props.setItemsAD} />
             {props.items.map((item) =>
           <table className={styles.tableList}>
             <thead>

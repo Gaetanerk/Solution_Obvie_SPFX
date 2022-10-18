@@ -14,7 +14,8 @@ export function MeetingPage(props) {
         <div>
             <BtnReturnHome context={props.context} 
                            screen={props.screen} setScreen={props.setScreen} 
-                           items={props.items} setItems={props.setItems} />
+                           items={props.items} setItems={props.setItems} 
+                           itemsAD={props.itemsAD} setItemsAD={props.setItemsAD} />
             <BtnMeeting className={styles.btnMeeting} context={props.context} 
                                                       items={props.items} setItems={props.setItems} 
                                                       count={props.count} setCount={props.setCount} 

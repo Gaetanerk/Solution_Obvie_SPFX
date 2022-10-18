@@ -7,6 +7,7 @@ export function BtnReturnHome(props) {
     function changeScreen() {
 
         props.setItems([]);
+        props.setItemsAD([]);
         props.setScreen('home');
     }
 
