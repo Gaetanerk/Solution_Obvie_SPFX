@@ -58,7 +58,12 @@ export function Form(props) {
         ParticipantsId: userId[0],
         Etat: formData.status,
       });
-      setFormData({...formData, object: "", orderDay: "", organizer: "", nameProject: "", customer: "", dateHour: ""});
+      setFormData({...formData, object: "", 
+                                orderDay: "", 
+                                organizer: "", 
+                                nameProject: "", 
+                                customer: "", 
+                                dateHour: ""});
       props.setCount(props.count + 1);
     }
 
@@ -77,12 +82,27 @@ export function Form(props) {
         return (
         <div>
         <form className={styles.formMeeting}>
-          <input onChange={(e) => setFormData({...formData, status: e.currentTarget.value})} value={formData.status} style={{visibility: 'hidden'}} />
-          <TextField onChange={(e) => setFormData({...formData, object: e.currentTarget.value})} className={styles.inputForm} value={formData.object} placeholder="Objet" autoFocus={true} />
-          <TextField onChange={(e) => setFormData({...formData, orderDay: e.currentTarget.value})} className={styles.inputForm} value={formData.orderDay} placeholder="Ordre du jour" />
-          <TextField onChange={(e) => setFormData({...formData, organizer: e.currentTarget.value})} className={styles.inputForm} value={formData.organizer} placeholder="Organisateur" />
-          <TextField onChange={(e) => setFormData({...formData, nameProject: e.currentTarget.value})} className={styles.inputForm} value={formData.nameProject} placeholder="Nom du projet" />
-          <TextField onChange={(e) => setFormData({...formData, customer: e.currentTarget.value})} className={styles.inputForm} value={formData.customer} placeholder="Client" />
+          <TextField onChange={(e) => setFormData({...formData, object: e.currentTarget.value})} 
+                     className={styles.inputForm} 
+                     value={formData.object} 
+                     placeholder="Objet" 
+                     autoFocus={true} />
+          <TextField onChange={(e) => setFormData({...formData, orderDay: e.currentTarget.value})} 
+                     className={styles.inputForm} 
+                     value={formData.orderDay} 
+                     placeholder="Ordre du jour" />
+          <TextField onChange={(e) => setFormData({...formData, organizer: e.currentTarget.value})} 
+                     className={styles.inputForm} 
+                     value={formData.organizer} 
+                     placeholder="Organisateur" />
+          <TextField onChange={(e) => setFormData({...formData, nameProject: e.currentTarget.value})} 
+                     className={styles.inputForm} 
+                     value={formData.nameProject} 
+                     placeholder="Nom du projet" />
+          <TextField onChange={(e) => setFormData({...formData, customer: e.currentTarget.value})} 
+                     className={styles.inputForm} 
+                     value={formData.customer} 
+                     placeholder="Client" />
           <PeoplePicker
           context={props.context}
           showtooltip={true}
@@ -93,9 +113,17 @@ export function Form(props) {
           resolveDelay={1000}
           required={true}
           placeholder="Participants"
+          peoplePickerWPclassName={styles.backgroundPeoplePicker}
           />
-          <TextField onChange={(e) => setFormData({...formData, dateHour: e.currentTarget.value})} className={styles.inputFormDateHour} type="datetime-local" value={formData.dateHour} placeholder="Date" />
-          <DefaultButton onClick={addList} className={styles.btnSubmit} disabled={!inputValue ? true : false} text="Valider le formulaire" />
+          <TextField onChange={(e) => setFormData({...formData, dateHour: e.currentTarget.value})} 
+                     className={styles.inputFormDateHour} 
+                     type="datetime-local" 
+                     value={formData.dateHour} 
+                     placeholder="Date" />
+          <DefaultButton onClick={addList} 
+                         className={styles.btnSubmit} 
+                         disabled={!inputValue ? true : false} 
+                         text="Valider le formulaire" />
         </form>
         </div>
         )

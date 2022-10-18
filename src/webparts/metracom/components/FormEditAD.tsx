@@ -4,7 +4,7 @@ import { DefaultButton } from '@fluentui/react/lib/Button';
 import { TextField } from '@fluentui/react/lib/TextField';
 import { PeoplePicker, PrincipalType } from "@pnp/spfx-controls-react/lib/PeoplePicker";
 import { spfi, SPFx } from "@pnp/sp";
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/items";
@@ -13,9 +13,39 @@ import { BtnReturnMeeting } from './BtnReturnMeeting';
 export function FormEditAD(props) {         
     
     const dateStart = props.itemsDetailAD.Dated_x00e9_but;
-    const dateStartRebuild = dateStart[6]+dateStart[7]+dateStart[8]+dateStart[9]+"-"+dateStart[3]+dateStart[4]+"-"+dateStart[0]+dateStart[1]+"T"+dateStart[11]+dateStart[12]+":"+dateStart[14]+dateStart[15];
+    const dateStartRebuild = dateStart[6]+
+                             dateStart[7]+
+                             dateStart[8]
+                             +dateStart[9]+
+                             "-"+
+                             dateStart[3]+
+                             dateStart[4]+
+                             "-"+
+                             dateStart[0]+
+                             dateStart[1]+
+                             "T"+
+                             dateStart[11]+
+                             dateStart[12]+
+                             ":"+
+                             dateStart[14]+
+                             dateStart[15];
     const dateEnd = props.itemsDetailAD.Datedefin;
-    const dateEndRebuild = dateEnd[6]+dateEnd[7]+dateEnd[8]+dateEnd[9]+"-"+dateEnd[3]+dateEnd[4]+"-"+dateEnd[0]+dateEnd[1]+"T"+dateEnd[11]+dateEnd[12]+":"+dateEnd[14]+dateEnd[15];
+    const dateEndRebuild = dateEnd[6]+
+                           dateEnd[7]+
+                           dateEnd[8]+
+                           dateEnd[9]+
+                           "-"+
+                           dateEnd[3]+
+                           dateEnd[4]+
+                           "-"+
+                           dateEnd[0]+
+                           dateEnd[1]+
+                           "T"+
+                           dateEnd[11]+
+                           dateEnd[12]+
+                           ":"+
+                           dateEnd[14]+
+                           dateEnd[15];
 
     const [formData, setFormData] = useState({
         titleAction: props.itemsDetailAD.Title,
@@ -82,7 +112,18 @@ export function FormEditAD(props) {
             Dated_x00e9_but: formData.dateStart,
             Datedefin: formData.dateEnd,
         })
-        setFormData({...formData, titleAction: "", descriptionAction: "", summonsAction: "", transmitter: "", validator: "", descriptionDecision: "", recipientDecision: "", termAction: "", dateStart: "", dateEnd: ""});
+        setFormData({...formData, titleAction: "", 
+                                  descriptionAction: "", 
+                                  summonsAction: "", 
+                                  transmitter: "", 
+                                  validator: "", 
+                                  descriptionDecision: "", 
+                                  recipientDecision: "", 
+                                  termAction: "", 
+                                  dateStart: "", 
+                                  dateEnd: ""});
+        props.setItemsAD(props.itemsAD)
+        props.setItemsDetailAD(props.itemsDetailAD)
         props.setScreen('editsuccess')
     }
 
@@ -110,10 +151,20 @@ export function FormEditAD(props) {
 
     return (
         <div>
-        <BtnReturnMeeting context={props.context} items={props.items} setItems={props.setItems} setScreen={props.setScreen} itemsDeatilAD={props.itemsDetailAD} setItemsDetailAD={props.setItemsDetailAD} />
+        <BtnReturnMeeting context={props.context} 
+                          items={props.items} setItems={props.setItems} 
+                          setScreen={props.setScreen} 
+                          itemsDeatilAD={props.itemsDetailAD} setItemsDetailAD={props.setItemsDetailAD} />
         <form className={styles.formMeeting}>
-        <TextField onChange={(e) => setFormData({...formData, titleAction: e.currentTarget.value})} className={styles.inputForm} value={formData.titleAction} placeholder="Titre de l'action" autoFocus={true} />
-        <TextField onChange={(e) => setFormData({...formData, descriptionAction: e.currentTarget.value})} className={styles.inputForm} value={formData.descriptionAction} placeholder="Description de l'action" />
+        <TextField onChange={(e) => setFormData({...formData, titleAction: e.currentTarget.value})} 
+                  className={styles.inputForm} 
+                  value={formData.titleAction} 
+                  placeholder="Titre de l'action" 
+                  autoFocus={true} />
+        <TextField onChange={(e) => setFormData({...formData, descriptionAction: e.currentTarget.value})} 
+                  className={styles.inputForm} 
+                  value={formData.descriptionAction} 
+                  placeholder="Description de l'action" />
           <PeoplePicker
           context={props.context}
           showtooltip={true}
@@ -125,8 +176,12 @@ export function FormEditAD(props) {
           required={true}
           placeholder="Émetteur de l'action"
           defaultSelectedUsers={[formData.transmitter]}
+          peoplePickerWPclassName={styles.backgroundPeoplePicker}
           />
-          <TextField onChange={(e) => setFormData({...formData, summonsAction: e.currentTarget.value})} className={styles.inputFormSummons} value={formData.summonsAction} placeholder="Assignation de l'action" />
+          <TextField onChange={(e) => setFormData({...formData, summonsAction: e.currentTarget.value})} 
+                    className={styles.inputFormSummons} 
+                    value={formData.summonsAction} 
+                    placeholder="Assignation de l'action" />
           <PeoplePicker
           context={props.context}
           showtooltip={true}
@@ -138,8 +193,12 @@ export function FormEditAD(props) {
           required={true}
           placeholder="Valideur de l'action"
           defaultSelectedUsers={[formData.validator]}
+          peoplePickerWPclassName={styles.backgroundPeoplePicker}
           />
-          <TextField onChange={(e) => setFormData({...formData, descriptionDecision: e.currentTarget.value})} className={styles.inputFormDesc} value={formData.descriptionDecision} placeholder="Description décision" />
+          <TextField onChange={(e) => setFormData({...formData, descriptionDecision: e.currentTarget.value})} 
+                    className={styles.inputFormDesc} 
+                    value={formData.descriptionDecision} 
+                    placeholder="Description décision" />
           <PeoplePicker
           context={props.context}
           showtooltip={true}
@@ -151,10 +210,22 @@ export function FormEditAD(props) {
           required={true}
           placeholder="Destinataire décision"
           defaultSelectedUsers={[formData.recipientDecision]}
+          peoplePickerWPclassName={styles.backgroundPeoplePicker}
           />
-          <TextField onChange={(e) => setFormData({...formData, termAction: e.currentTarget.value})} className={styles.inputFormTerm} value={formData.termAction} placeholder="Durée de l'action" />
-          <TextField onChange={(e) => setFormData({...formData, dateStart: e.currentTarget.value})} className={styles.inputFormTerm} type="datetime-local" value={formData.dateStart} placeholder="Date de début" />
-          <TextField onChange={(e) => setFormData({...formData, dateEnd: e.currentTarget.value})} className={styles.inputFormTerm} type="datetime-local" value={formData.dateEnd} placeholder="Date de fin" />
+          <TextField onChange={(e) => setFormData({...formData, termAction: e.currentTarget.value})} 
+                    className={styles.inputFormTerm} 
+                    value={formData.termAction} 
+                    placeholder="Durée de l'action" />
+          <TextField onChange={(e) => setFormData({...formData, dateStart: e.currentTarget.value})} 
+                    className={styles.inputFormTerm} 
+                    type="datetime-local" 
+                    value={formData.dateStart} 
+                    placeholder="Date de début" />
+          <TextField onChange={(e) => setFormData({...formData, dateEnd: e.currentTarget.value})} 
+                    className={styles.inputFormTerm} 
+                    type="datetime-local" 
+                    value={formData.dateEnd} 
+                    placeholder="Date de fin" />
           <DefaultButton onClick={updateMeeting} className={styles.btnSubmit} text="Valider le formulaire" />
         </form>
         </div>

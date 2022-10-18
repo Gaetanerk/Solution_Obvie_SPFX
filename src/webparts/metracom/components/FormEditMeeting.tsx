@@ -13,7 +13,22 @@ import { BtnReturnMeeting } from './BtnReturnMeeting';
 export function FormEditMeeting(props) {
     
     const date = props.itemsDetail.Dateetheure;
-    const dateRebuild = date[6]+date[7]+date[8]+date[9]+"-"+date[3]+date[4]+"-"+date[0]+date[1]+"T"+date[11]+date[12]+":"+date[14]+date[15];
+    const dateRebuild = date[6]+
+                        date[7]+
+                        date[8]+
+                        date[9]+
+                        "-"+
+                        date[3]+
+                        date[4]+
+                        "-"+
+                        date[0]+
+                        date[1]+
+                        "T"+
+                        date[11]+
+                        date[12]+
+                        ":"+
+                        date[14]+
+                        date[15];
 
     const [formData, setFormData] = useState({
         object: props.itemsDetail.Title,
@@ -50,7 +65,12 @@ export function FormEditMeeting(props) {
             Nomduclient: formData.customer,
             ParticipantsId: userId[0],
         })
-        setFormData({...formData, object: "", orderDay: "", organizer: "", nameProject: "", customer: "", dateHour: ""});
+        setFormData({...formData, object: "", 
+                                  orderDay: "", 
+                                  organizer: "", 
+                                  nameProject: "", 
+                                  customer: "", 
+                                  dateHour: ""});
         props.setScreen('editsuccess')
     }
 
@@ -63,13 +83,31 @@ export function FormEditMeeting(props) {
 
     return (
         <div>
-        <BtnReturnMeeting context={props.context} items={props.items} setItems={props.setItems} setScreen={props.setScreen} />
+        <BtnReturnMeeting context={props.context} 
+                          items={props.items} setItems={props.setItems} 
+                          setScreen={props.setScreen} />
         <form className={styles.formMeeting}>
-          <TextField onChange={(e) => setFormData({...formData, object: e.currentTarget.value})} className={styles.inputForm} value={formData.object} placeholder="Objet" autoFocus={true} />
-          <TextField onChange={(e) => setFormData({...formData, orderDay: e.currentTarget.value})} className={styles.inputForm} value={formData.orderDay} placeholder="Ordre du jour" />
-          <TextField onChange={(e) => setFormData({...formData, organizer: e.currentTarget.value})} className={styles.inputForm} value={formData.organizer} placeholder="Organisateur" />
-          <TextField onChange={(e) => setFormData({...formData, nameProject: e.currentTarget.value})} className={styles.inputForm} value={formData.nameProject} placeholder="Nom du projet" />
-          <TextField onChange={(e) => setFormData({...formData, customer: e.currentTarget.value})} className={styles.inputForm} value={formData.customer} placeholder="Client" />
+          <TextField onChange={(e) => setFormData({...formData, object: e.currentTarget.value})} 
+                     className={styles.inputForm} 
+                     value={formData.object} 
+                     placeholder="Objet" 
+                     autoFocus={true} />
+          <TextField onChange={(e) => setFormData({...formData, orderDay: e.currentTarget.value})} 
+                     className={styles.inputForm} 
+                     value={formData.orderDay} 
+                     placeholder="Ordre du jour" />
+          <TextField onChange={(e) => setFormData({...formData, organizer: e.currentTarget.value})} 
+                     className={styles.inputForm} 
+                     value={formData.organizer} 
+                     placeholder="Organisateur" />
+          <TextField onChange={(e) => setFormData({...formData, nameProject: e.currentTarget.value})} 
+                     className={styles.inputForm} 
+                     value={formData.nameProject} 
+                     placeholder="Nom du projet" />
+          <TextField onChange={(e) => setFormData({...formData, customer: e.currentTarget.value})} 
+                     className={styles.inputForm} 
+                     value={formData.customer} 
+                     placeholder="Client" />
           <PeoplePicker
           context={props.context}
           showtooltip={true}
@@ -81,9 +119,16 @@ export function FormEditMeeting(props) {
           required={true}
           placeholder="Participants"
           defaultSelectedUsers={[formData.attendees]}
+          peoplePickerWPclassName={styles.backgroundPeoplePicker}
           />
-          <TextField onChange={(e) => setFormData({...formData, dateHour: e.currentTarget.value})} className={styles.inputFormDateHour} type="datetime-local" value={formData.dateHour} placeholder="Date" />
-          <DefaultButton onClick={updateMeeting} className={styles.btnSubmit} text="Valider le formulaire" />
+          <TextField onChange={(e) => setFormData({...formData, dateHour: e.currentTarget.value})} 
+                     className={styles.inputFormDateHour} 
+                     type="datetime-local" 
+                     value={formData.dateHour} 
+                     placeholder="Date" />
+          <DefaultButton onClick={updateMeeting} 
+                         className={styles.btnSubmit} 
+                         text="Valider le formulaire" />
         </form>
         </div>
     )

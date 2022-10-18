@@ -26,7 +26,7 @@ export function BtnMeeting(props) {
         }
       };
       
-  console.log('ok2');
+  console.log('ok8');
 
   const menuProps: IContextualMenuProps = {
     items: [
@@ -111,7 +111,13 @@ export function BtnMeeting(props) {
               <td width={"25%"}>{item.Nomduprojet}</td>
               <td width={"25%"}>{item.Nomduclient}</td>
               <td width={"25%"}>{item.ParticipantsId}</td>
-              <td width={"25%"}><BtnDetails context={props.context} idItem={item.Id} setIdItem={props.setIdItem} idItemAD={props.idItemAD} setIdItemAD={props.setIdItemAD} setScreen={props.setScreen} item={item} items={props.items} setItems={props.setItems} itemsDetail={props.itemsDetail} setItemsDetail={props.setItemsDetail} itemsAD={props.itemsAD} setItemsAD={props.setItemsAD} /></td>
+              <td width={"25%"}><BtnDetails context={props.context} 
+                                            idItem={item.Id} setIdItem={props.setIdItem} 
+                                            idItemAD={props.idItemAD} setIdItemAD={props.setIdItemAD} 
+                                            setScreen={props.setScreen} 
+                                            item={item} items={props.items} setItems={props.setItems} 
+                                            itemsDetail={props.itemsDetail} setItemsDetail={props.setItemsDetail} 
+                                            itemsAD={props.itemsAD} setItemsAD={props.setItemsAD} /></td>
             </tr>
           </tbody>
         </table>

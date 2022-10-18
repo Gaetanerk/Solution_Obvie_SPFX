@@ -5,9 +5,8 @@ import { DefaultButton } from '@fluentui/react/lib/Button';
 export function BtnReturnMeeting(props) {
 
     function changeScreen() {
-
         props.setItems([]);
-        props.setScreen('detail');
+        props.setScreen('meeting');
     }
 
     return (

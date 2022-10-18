@@ -30,7 +30,14 @@ export function InfoList(props) {
               <th>Nom du projet :</th>
               <th>Nom du client :</th>
               <th>Participants :</th>
-              <th><BtnEditMeeting context={props.context} items={props.items} setItems={props.setItems} setScreen={props.setScreen} idItem={props.idItem} setIdItem={props.setIdItem} itemsDetail={props.itemsDetail} setItemsDetail={props.setItemsDetail} itemsDetailAD={props.itemsDetailAD} setItemsDetailAD={props.setItemsDetailAD} itemsAD={props.itemsAD} setItemsAD={props.setItemsAD} idItemAD={props.idItemAD} setIdItemAD={props.setIdItemAD}/></th>
+              <th><BtnEditMeeting context={props.context} 
+                                  items={props.items} setItems={props.setItems} 
+                                  setScreen={props.setScreen} 
+                                  idItem={props.idItem} setIdItem={props.setIdItem} 
+                                  itemsDetail={props.itemsDetail} setItemsDetail={props.setItemsDetail} 
+                                  itemsDetailAD={props.itemsDetailAD} setItemsDetailAD={props.setItemsDetailAD} 
+                                  itemsAD={props.itemsAD} setItemsAD={props.setItemsAD} 
+                                  idItemAD={props.idItemAD} setIdItemAD={props.setIdItemAD}/></th>
             </tr>
           </thead>
           <tbody>
@@ -38,7 +45,9 @@ export function InfoList(props) {
               <td width={"25%"}>{props.itemsDetail.Nomduprojet}</td>
               <td width={"25%"}>{props.itemsDetail.Nomduclient}</td>
               <td width={"25%"}>{props.itemsDetail.ParticipantsId}</td>
-              <td width={"25%"}><BtnStatusMeeting context={props.context} idItem={props.idItem} setIdItem={props.setIdItem} setScreen={props.setScreen} /></td>
+              <td width={"25%"}><BtnStatusMeeting context={props.context} 
+                                                  idItem={props.idItem} setIdItem={props.setIdItem} 
+                                                  setScreen={props.setScreen} /></td>
             </tr>
           </tbody>
         </table>

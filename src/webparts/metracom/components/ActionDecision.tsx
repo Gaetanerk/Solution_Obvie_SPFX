@@ -101,7 +101,18 @@ export function ActionDecision(props) {
         Datedefin: formData.dateEnd,
         IDMeeting: formData.ID
       });
-      setFormData({...formData, titleAction: "", descriptionAction: "", summonsAction: "", transmitter: "", validator: "", descriptionDecision: "", recipientDecision: "", status: "", termAction: "", dateStart: "", dateEnd: "", meeting: ""});
+      setFormData({...formData, titleAction: "", 
+                                descriptionAction: "", 
+                                summonsAction: "", 
+                                transmitter: "", 
+                                validator: "", 
+                                descriptionDecision: "", 
+                                recipientDecision: "", 
+                                status: "", 
+                                termAction: "", 
+                                dateStart: "", 
+                                dateEnd: "", 
+                                meeting: ""});
       setCount(count + 1);
     }
     
@@ -184,14 +195,19 @@ export function ActionDecision(props) {
         <tr className={styles.headListMeeting}>
           <th>Date de début :</th>
           <th>Date de fin :</th>
-          <th><BtnEditAD context={props.context} setScreen={props.setScreen} itemsAD={props.itemsAD} setItemsAD={props.setItemsAD} itemsDetailAD={item} setItemsDetailAD={props.setItemsDetailAD} /></th>
+          <th><BtnEditAD context={props.context} 
+                         setScreen={props.setScreen} 
+                         itemsAD={props.itemsAD} setItemsAD={props.setItemsAD} 
+                         itemsDetailAD={item} setItemsDetailAD={props.setItemsDetailAD} /></th>
         </tr>
       </thead>
       <tbody>
         <tr className={styles.listMeeting}>
           <td width={"33%"}>{item.Dated_x00e9_but}</td>
           <td width={"33%"}>{item.Datedefin}</td>
-          <td width={"33%"}><BtnStatusAD context={props.context} idItemAD={item.ID} setIdItemAD={props.setIdItemAD} setScreen={props.setScreen}/></td>
+          <td width={"33%"}><BtnStatusAD context={props.context} 
+                                         idItemAD={item.ID} setIdItemAD={props.setIdItemAD} 
+                                         setScreen={props.setScreen}/></td>
         </tr>
       </tbody>
     </table>
@@ -253,22 +269,38 @@ export function ActionDecision(props) {
         <tr className={styles.headListMeeting}>
           <th>Date de début :</th>
           <th>Date de fin :</th>
-          <th><BtnEditAD context={props.context} items={props.items} setItems={props.setItems} itemsDetailAD={item} setItemsDetailAD={props.setItemsDetailAD} setScreen={props.setScreen} idItem={props.idItem} setIdItem={props.setIdItem} itemsDetail={props.itemsDetail} setItemsDetail={props.setItemsDetail}itemsAD={props.itemsAD} setItemsAD={props.setItemsAD} idItemAD={props.idItemAD} setIdItemAD={props.setIdItemAD}/></th>
+          <th><BtnEditAD context={props.context} 
+                         items={props.items} setItems={props.setItems} 
+                         itemsDetailAD={item} setItemsDetailAD={props.setItemsDetailAD} 
+                         setScreen={props.setScreen} 
+                         idItem={props.idItem} setIdItem={props.setIdItem} 
+                         itemsDetail={props.itemsDetail} setItemsDetail={props.setItemsDetail} 
+                         itemsAD={props.itemsAD} setItemsAD={props.setItemsAD} 
+                         idItemAD={props.idItemAD} setIdItemAD={props.setIdItemAD}/></th>
         </tr>
       </thead>
       <tbody>
         <tr className={styles.listMeeting}>
           <td width={"33%"}>{item.Dated_x00e9_but}</td>
           <td width={"33%"}>{item.Datedefin}</td>
-          <td width={"33%"}><BtnStatusAD context={props.context} idItemAD={item.ID} setIdItemAD={props.setIdItemAD} setScreen={props.setScreen}/></td>
+          <td width={"33%"}><BtnStatusAD context={props.context} 
+                                         idItemAD={item.ID} setIdItemAD={props.setIdItemAD} 
+                                         setScreen={props.setScreen}/></td>
         </tr>
       </tbody>
     </table>
         )}
         <form className={styles.formMeeting}>
-        <input onChange={(e) => setFormData({...formData, status: e.currentTarget.value})} value={formData.status} style={{visibility: 'hidden'}} />
-        <TextField onChange={(e) => setFormData({...formData, titleAction: e.currentTarget.value})} className={styles.inputForm} value={formData.titleAction} placeholder="Titre de l'action" autoFocus={true} />
-        <TextField onChange={(e) => setFormData({...formData, descriptionAction: e.currentTarget.value})} className={styles.inputForm} value={formData.descriptionAction} placeholder="Description de l'action" />
+        <input onChange={(e) => setFormData({...formData, status: e.currentTarget.value})} 
+               value={formData.status} style={{visibility: 'hidden'}} />
+        <TextField onChange={(e) => setFormData({...formData, titleAction: e.currentTarget.value})} 
+                   className={styles.inputForm} 
+                   value={formData.titleAction} 
+                   placeholder="Titre de l'action" autoFocus={true} />
+        <TextField onChange={(e) => setFormData({...formData, descriptionAction: e.currentTarget.value})} 
+                   className={styles.inputForm} 
+                   value={formData.descriptionAction} 
+                   placeholder="Description de l'action" />
         <PeoplePicker
           context={props.context}
           showtooltip={true}
@@ -278,8 +310,12 @@ export function ActionDecision(props) {
           resolveDelay={1000}
           required={true}
           placeholder="Emetteur de l'action"
+          peoplePickerWPclassName={styles.backgroundPeoplePicker}
           />
-        <TextField onChange={(e) => setFormData({...formData, summonsAction: e.currentTarget.value})} className={styles.inputFormSummons} value={formData.summonsAction} placeholder="Assignation de l'action" />
+        <TextField onChange={(e) => setFormData({...formData, summonsAction: e.currentTarget.value})} 
+                   className={styles.inputFormSummons} 
+                   value={formData.summonsAction} 
+                   placeholder="Assignation de l'action" />
         <PeoplePicker
           context={props.context}
           showtooltip={true}
@@ -289,8 +325,12 @@ export function ActionDecision(props) {
           resolveDelay={1000}
           required={true}
           placeholder="Valideur de l'action"
+          peoplePickerWPclassName={styles.backgroundPeoplePicker}
           />
-        <TextField onChange={(e) => setFormData({...formData, descriptionDecision: e.currentTarget.value})} className={styles.inputFormDesc} value={formData.descriptionDecision} placeholder="Description décision" />
+        <TextField onChange={(e) => setFormData({...formData, descriptionDecision: e.currentTarget.value})} 
+                   className={styles.inputFormDesc} 
+                   value={formData.descriptionDecision} 
+                   placeholder="Description décision" />
         <PeoplePicker
           context={props.context}
           showtooltip={true}
@@ -300,11 +340,26 @@ export function ActionDecision(props) {
           resolveDelay={1000}
           required={true}
           placeholder="Destinataire décision"
+          peoplePickerWPclassName={styles.backgroundPeoplePicker}
           />
-        <TextField onChange={(e) => setFormData({...formData, termAction: e.currentTarget.value})} className={styles.inputFormTerm} value={formData.termAction} placeholder="Durée de l'action" />
-        <TextField onChange={(e) => setFormData({...formData, dateStart: e.currentTarget.value})} className={styles.inputForm} value={formData.dateStart} type="datetime-local" placeholder="Date de début" />
-        <TextField onChange={(e) => setFormData({...formData, dateEnd: e.currentTarget.value})} className={styles.inputForm} value={formData.dateEnd} type="datetime-local" placeholder="Date de fin" />
-        <DefaultButton onClick={addListAD} className={styles.btnSubmit} disabled={!inputValue ? true : false} text="Valider le formulaire" />
+        <TextField onChange={(e) => setFormData({...formData, termAction: e.currentTarget.value})} 
+                   className={styles.inputFormTerm} 
+                   value={formData.termAction} 
+                   placeholder="Durée de l'action" />
+        <TextField onChange={(e) => setFormData({...formData, dateStart: e.currentTarget.value})} 
+                   className={styles.inputForm} 
+                   value={formData.dateStart} 
+                   type="datetime-local" 
+                   placeholder="Date de début" />
+        <TextField onChange={(e) => setFormData({...formData, dateEnd: e.currentTarget.value})} 
+                   className={styles.inputForm} 
+                   value={formData.dateEnd} 
+                   type="datetime-local" 
+                   placeholder="Date de fin" />
+        <DefaultButton onClick={addListAD} 
+                       className={styles.btnSubmit} 
+                       disabled={!inputValue ? true : false} 
+                       text="Valider le formulaire" />
         </form>
     </div>
       )
