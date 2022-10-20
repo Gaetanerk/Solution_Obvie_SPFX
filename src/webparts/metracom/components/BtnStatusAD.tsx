@@ -14,7 +14,12 @@ export function BtnStatusAD(props) {
         const i = await list.items.getById(props.idItemAD).update({
           Etat: idAD
         });
-    }
+        props.item.Etat = idAD;
+        const index = props.itemsAD.findIndex(e => e.ID === props.idItemAD);    
+        const newState = [...props.itemsAD];
+        newState[index] = props.item;
+        props.setItemsAD(newState);
+        }
 
     const menuProps: IContextualMenuProps = {
         items: [
@@ -25,7 +30,7 @@ export function BtnStatusAD(props) {
             onClick: function() {
             const upStatus = updateStatus("En cours")
             props.setIdItemAD(props.idItemAD)
-                props.setScreen('editsuccess')}
+            props.setScreen('editsuccess')}
           },
           {
             key: 'Late',
@@ -34,7 +39,7 @@ export function BtnStatusAD(props) {
             onClick: function() {
             const upStatus = updateStatus("En retard")
             props.setIdItemAD(props.idItemAD)
-                props.setScreen('editsuccess')}
+            props.setScreen('editsuccess')}
           },
           {
             key: 'Finished',

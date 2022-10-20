@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { DefaultButton } from '@fluentui/react/lib/Button';
-import { useEffect } from 'react';
 
 export function EditSuccess(props) {
 
     function displayEditSuccess() {
-        props.setScreen('meeting')
+        props.setScreen('detail')
     }
 
     return (

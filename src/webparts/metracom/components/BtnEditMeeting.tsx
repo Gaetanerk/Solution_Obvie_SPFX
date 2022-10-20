@@ -5,6 +5,7 @@ import { DefaultButton } from '@fluentui/react/lib/Button';
 export function BtnEditMeeting(props) {
 
 async function displayEditMeeting() {
+    
     props.setScreen('editmeeting')
 }
 

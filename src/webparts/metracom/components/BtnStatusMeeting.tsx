@@ -14,6 +14,8 @@ export function BtnStatusMeeting(props) {
         const i = await list.items.getById(props.idItem).update({
           Etat: status
         });
+        props.itemsDetail.Etat = status;   
+        props.setItemsDetail(props.itemsDetail);
       }
 
     const menuProps: IContextualMenuProps = {

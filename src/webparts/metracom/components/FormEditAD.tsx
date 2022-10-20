@@ -122,6 +122,20 @@ export function FormEditAD(props) {
                                   termAction: "", 
                                   dateStart: "", 
                                   dateEnd: ""});
+        props.itemsDetail.Title = formData.titleAction;
+        const dateStart = new Date(formData.dateStart);
+        const newDateStart = dateStart.toLocaleString('fr-FR');
+        const dateEnd = new Date(formData.dateEnd);
+        const newDateEnd = dateEnd.toLocaleString('fr-FR');
+        props.itemsDetailAD.Descriptiondelaction = formData.descriptionAction;
+        props.itemsDetailAD.Assignationdelaction = formData.summonsAction;
+        props.itemsDetailAD.Emetteurdelaction = formData.transmitter;
+        props.itemsDetailAD.Valideurdelaction = formData.validator;
+        props.itemsDetailAD.Descriptiond_x00e9_cision = formData.descriptionDecision;
+        props.itemsDetailAD.Destinataired_x00e9_cisionId = formData.recipientDecision;
+        props.itemsDetailAD.Dur_x00e9_e = formData.termAction;
+        props.itemsDetailAD.Dated_x00e9_but = newDateStart;
+        props.itemsDetailAD.Datedefin = newDateEnd;
         props.setItemsAD(props.itemsAD)
         props.setItemsDetailAD(props.itemsDetailAD)
         props.setScreen('editsuccess')

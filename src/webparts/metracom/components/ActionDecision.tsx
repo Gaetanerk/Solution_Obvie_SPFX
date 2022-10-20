@@ -207,7 +207,10 @@ export function ActionDecision(props) {
           <td width={"33%"}>{item.Datedefin}</td>
           <td width={"33%"}><BtnStatusAD context={props.context} 
                                          idItemAD={item.ID} setIdItemAD={props.setIdItemAD} 
-                                         setScreen={props.setScreen}/></td>
+                                         setScreen={props.setScreen}
+                                         itemsAD={props.itemsAD} 
+                                         setItemsAD={props.setItemsAD}
+                                         item={item} /></td>
         </tr>
       </tbody>
     </table>
@@ -285,7 +288,10 @@ export function ActionDecision(props) {
           <td width={"33%"}>{item.Datedefin}</td>
           <td width={"33%"}><BtnStatusAD context={props.context} 
                                          idItemAD={item.ID} setIdItemAD={props.setIdItemAD} 
-                                         setScreen={props.setScreen}/></td>
+                                         setScreen={props.setScreen}
+                                         itemsAD={props.itemsAD} 
+                                         setItemsAD={props.setItemsAD}
+                                         item={item}/></td>
         </tr>
       </tbody>
     </table>

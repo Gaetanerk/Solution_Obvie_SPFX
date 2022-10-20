@@ -16,7 +16,8 @@ export function DetailPage(props) {
                       itemsDetail={props.itemsDetail} setItemsDetail={props.setItemsDetail} 
                       idItem={props.idItem} setIdItem={props.setIdItem}
                       idItemAD={props.idItemAD} setIdItemAD={props.setIdItemAD} 
-                      items={props.items} setItems={props.setItems}/>
+                      items={props.items} setItems={props.setItems}
+                      itemsAD={props.itemsAD} setItemsAd={props.setItemsAD}/>
             <ActionDecision context={props.context} 
                             itemsAD={props.itemsAD} setItemsAD={props.setItemsAD} 
                             itemsDetailAD={props.itemsDetailAD} setItemsDetailAD={props.setItemsDetailAD} 

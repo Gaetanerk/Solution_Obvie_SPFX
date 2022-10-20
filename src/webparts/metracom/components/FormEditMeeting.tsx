@@ -71,6 +71,16 @@ export function FormEditMeeting(props) {
                                   nameProject: "", 
                                   customer: "", 
                                   dateHour: ""});
+        props.itemsDetail.Title = formData.object;
+        const date = new Date(formData.dateHour);
+        const newDate = date.toLocaleString('fr-FR');
+        props.itemsDetail.Dateetheure = newDate 
+        props.itemsDetail.Ordredujour = formData.orderDay;   
+        props.itemsDetail.Organisateur = formData.organizer;   
+        props.itemsDetail.Nomduprojet = formData.nameProject;   
+        props.itemsDetail.Nomduclient = formData.customer;   
+        props.itemsDetail.ParticipantsId = formData.attendees;
+        props.setItemsDetail(props.itemsDetail);
         props.setScreen('editsuccess')
     }
 
