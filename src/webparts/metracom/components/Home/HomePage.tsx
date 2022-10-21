@@ -1,10 +1,10 @@
 import * as React from 'react';
-import styles from './Metracom.module.scss';
-import { BtnMeeting } from './BtnMeeting';
-import { Form } from './Form';
+import styles from '../Metracom.module.scss';
+import { BtnMeeting } from '../Meeting/BtnMeeting';
+import { Form } from '../Meeting/Form';
 import { escape } from '@microsoft/sp-lodash-subset';
-import { BtnFormNewMeeting } from './BtnFormNewMeeting';
-import { SearchMeeting } from './SearchMeeting'
+import { BtnFormNewMeeting } from '../Meeting/BtnFormNewMeeting';
+import { SearchMeeting } from '../Search/SearchMeeting'
 
 export function HomePage(props) {
 
@@ -14,7 +14,7 @@ export function HomePage(props) {
                            items={props.items} setItems={props.setItems} 
                            setScreen={props.setScreen} />
             <div className={styles.divWelcome}>
-            <img src={require('../images/logoSolutionObvie.jpg')} />
+            <img src={require('../../images/logoSolutionObvie.jpg')} />
             <h1>Réunion Solution Obvie</h1>
             <h2>Bonjour, {escape(props.userDisplayName)} !</h2>
                 <BtnMeeting className={styles.btnMeeting} context={props.context} 

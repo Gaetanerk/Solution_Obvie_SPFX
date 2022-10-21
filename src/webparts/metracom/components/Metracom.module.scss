@@ -14,88 +14,90 @@
   &.teams {
     font-family: $ms-font-family-fallbacks;
   }
-.searchMeeting {
-  float: right;
-  width: 300px;
-  text-align: center;
-  margin-bottom: 3em;
-}
-.welcome {
-  text-align: center;
-  img {
-    width: 50%;
+  .searchMeeting {
+    float: right;
+    width: 300px;
+    text-align: center;
+    margin-bottom: 3em;
   }
-  .divWelcome {
-    display: block;
-    clear: right;
+  .welcome {
+    text-align: center;
+    img {
+      width: 50%;
+    }
+    .divWelcome {
+      display: block;
+      clear: right;
+    }
+    .btnCreate {
+      margin: 1em;
+      font-size: 0.85em;
+      width: 150px;
+    }
+    .btnMeeting {
+      width: 150px;
+      font-size: 0.85em;
+      margin: auto;
+    }
+    .btnMeetingDesactived {
+      display: none;
+    }
+    .btnRefresh {
+      top: 0.5em;
+      width: 220px;
+      margin: auto;
+      font-size: 0.8em;
+    }
+    h1 {
+      font-size: 2.5em;
+      text-decoration: underline;
+      color: #00a19a;
+      font-weight: 780;
+    }
+    h2 {
+      font-size: 1.8em;
+      color: #00a19a;
+      font-weight: 300;
+    }
+    .formMeeting {
+      background-color: #d6ebea;
+      border: 2px solid #00a19a;
+      border-radius: 1em;
+      margin: 2em;
+      padding: 2em 3em;
+      padding-top: 5em;
+    }
+    .inputForm {
+      margin-bottom: 1em;
+    }
+    .inputFormDisabled {
+      margin-bottom: 1em;
+      border: 1px solid black;
+    }
+    .inputFormDateHour {
+      margin-top: 1em;
+    }
+    .inputFormDesc, .inputFormTerm, .inputFormSummons {
+      margin: 1em 0;
+    }
+    .btnSubmit {
+      margin: 2em;
+      font-size: 0.8em;
+    }
   }
-  .btnCreate {
-    margin: 1em;
-    font-size: 0.85em;
-    width: 150px;
-  }
-  .btnMeeting {
-    width: 150px;
-    font-size: 0.85em;
-    margin: auto;
-  }
-  .btnMeetingDesactived {
-    display: none;
-  }
-  .btnRefresh {
-    top: 0.5em;
-    width: 220px;
-    margin: auto;
-  }
-  h1 {
-    font-size: 2.5em;
-    text-decoration: underline;
+  .objectMeeting {
     color: #00a19a;
-    font-weight: 780;
-  }
-  h2 {
     font-size: 1.8em;
-    color: #00a19a;
-    font-weight: 300;
+    margin: auto;
+    text-align: center;
   }
-  .formMeeting {
-    background-color: #d6ebea;
+  .tableList {
+    table-layout: fixed;
+    margin: 2em 0 1em 0;
+    padding: 1em;
     border: 2px solid #00a19a;
-    border-radius: 1em;
-    margin: 2em;
-    padding: 2em 3em;
-    padding-top: 5em;
-  }
-  .inputForm {
-    margin-bottom: 1em;
-  }
-  .inputFormDisabled {
-    margin-bottom: 1em;
-    border: 1px solid black;
-  }
-  .inputFormDateHour {
-    margin-top: 1em;
-  }
-  .inputFormDesc, .inputFormTerm, .inputFormSummons {
-    margin: 1em 0;
-  }
-  .btnSubmit {
-    margin: 2em;
-  }
-}
-.objectMeeting {
-  color: #00a19a;
-  font-size: 1.8em;
-  margin: auto;
-  text-align: center;
-}
-.tableList {
-  table-layout: fixed;
-  margin: 2em 0 1em 0;
-  padding: 1em;
-  border: 2px solid #00a19a;
-  border-radius: 10px;
-  width: 100%;
+    border-radius: 10px;
+    width: 100%;
   td {
     word-break: break-all
   }
@@ -117,19 +119,23 @@ thead {
 }
 .btnDetails {
   top: -1em;
+  font-size: 0.8em;
 }
 .btnDetailsDesactived {
   visibility: hidden;
 }
 .btnAction {
   margin: 0.5em;
+  font-size: 0.8em;
 }
 .btnReturnHome {
   bottom: 0.5em;
-  width: 300px;
+  width: 150px;
+  font-size: 0.8em;
 }
 .btnEdit {
   width: 150px;
+  font-size: 0.8em;
 }
 .backgroundPeoplePicker {
   background-color: white;

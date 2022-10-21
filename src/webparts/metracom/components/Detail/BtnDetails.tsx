@@ -5,6 +5,7 @@ import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/items";
 import "@pnp/sp/site-users/web";
+import styles from '../Metracom.module.scss';
 
 export function BtnDetails(props) {
     
@@ -53,6 +54,6 @@ export function BtnDetails(props) {
     }
 
     return (
-        <DefaultButton onClick={displayDetail} text="Détails" />
+        <DefaultButton onClick={displayDetail} className={styles.btnEdit} text="Détails" />
    )
 }

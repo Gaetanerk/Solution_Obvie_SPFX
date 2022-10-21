@@ -1,8 +1,7 @@
 import * as React from 'react';
-import styles from './Metracom.module.scss';
-import { BtnDetails } from './BtnDetails';
-import { BtnReturnHome } from './BtnReturnHome';
-import { SearchMeeting } from './SearchMeeting';
+import styles from '../Metracom.module.scss';
+import { BtnDetails } from '../Detail/BtnDetails';
+import { BtnReturnHome } from '../Home/BtnReturnHome';
 
 export function Search(props) {
     

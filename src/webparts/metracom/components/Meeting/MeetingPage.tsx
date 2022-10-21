@@ -1,7 +1,7 @@
 import * as React from 'react';
-import styles from './Metracom.module.scss';
+import styles from '../Metracom.module.scss';
 import { BtnMeeting } from './BtnMeeting';
-import { BtnReturnHome } from './BtnReturnHome';
+import { BtnReturnHome } from '../Home/BtnReturnHome';
 import { useEffect } from 'react';
 
 export function MeetingPage(props) {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from './Metracom.module.scss';
+import styles from '../Metracom.module.scss';
 import { DefaultButton } from '@fluentui/react/lib/Button'
 import { TextField } from '@fluentui/react/lib/TextField';
 import { spfi, SPFx } from "@pnp/sp";

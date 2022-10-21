@@ -1,7 +1,7 @@
 import * as React from 'react';
-import styles from './Metracom.module.scss';
-import { BtnEditMeeting } from './BtnEditMeeting';
-import { BtnStatusMeeting } from './BtnStatusMeeting';
+import styles from '../Metracom.module.scss';
+import { BtnEditMeeting } from '../Meeting/BtnEditMeeting';
+import { BtnStatusMeeting } from '../Meeting/BtnStatusMeeting';
 
 export function InfoList(props) {  
 

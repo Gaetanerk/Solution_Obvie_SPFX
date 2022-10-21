@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { InfoList } from './InfoList';
-import { BtnReturnHome } from './BtnReturnHome';
-import { ActionDecision } from './ActionDecision';
+import { BtnReturnHome } from '../Home/BtnReturnHome';
+import { ActionDecision } from '../ActionDecision/ActionDecision';
 
 export function DetailPage(props) {
     

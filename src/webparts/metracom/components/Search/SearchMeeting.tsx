@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from './Metracom.module.scss';
+import styles from '../Metracom.module.scss';
 import { SearchBox } from '@fluentui/react/lib/SearchBox';
 import { useState } from 'react';
 import { spfi, SPFx } from "@pnp/sp";

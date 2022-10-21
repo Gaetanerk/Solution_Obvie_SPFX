@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { HomePage } from './HomePage';
-import { MeetingPage } from './MeetingPage';
-import { DetailPage } from './DetailPage';
-import { EditSuccess } from './EditSuccess';
-import { FormEditMeeting } from './FormEditMeeting';
-import { FormEditAD } from './FormEditAD';
-import { Search } from './Search';
+import { MeetingPage } from '../Meeting/MeetingPage';
+import { DetailPage } from '../Detail/DetailPage';
+import { EditSuccess } from '../Success/EditSuccess';
+import { FormEditMeeting } from '../Meeting/FormEditMeeting';
+import { FormEditAD } from '../ActionDecision/FormEditAD';
+import { Search } from '../Search/Search';
 
 export function Welcome(props) {
 

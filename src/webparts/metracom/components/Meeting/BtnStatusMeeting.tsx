@@ -1,4 +1,5 @@
 import * as React from 'react';
+import styles from '../Metracom.module.scss';
 import { IContextualMenuProps } from '@fluentui/react';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import { spfi, SPFx } from "@pnp/sp";
@@ -6,20 +7,17 @@ import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/items";
 
-export function BtnStatusAD(props) {
+export function BtnStatusMeeting(props) {
     
-    async function updateStatus(idAD) {
+    async function updateStatus(status) {
         const sp = spfi().using(SPFx(props.context));
-        const list = sp.web.lists.getByTitle("Actiondecision");
-        const i = await list.items.getById(props.idItemAD).update({
-          Etat: idAD
+        const list = sp.web.lists.getByTitle("Liste de réunion");
+        const i = await list.items.getById(props.idItem).update({
+          Etat: status
         });
-        props.item.Etat = idAD;
-        const index = props.itemsAD.findIndex(e => e.ID === props.idItemAD);    
-        const newState = [...props.itemsAD];
-        newState[index] = props.item;
-        props.setItemsAD(newState);
-        }
+        props.itemsDetail.Etat = status;   
+        props.setItemsDetail(props.itemsDetail);
+      }
 
     const menuProps: IContextualMenuProps = {
         items: [
@@ -29,31 +27,35 @@ export function BtnStatusAD(props) {
             iconProps: { iconName: 'ConstructionCone' },
             onClick: function() {
             const upStatus = updateStatus("En cours")
-            props.setIdItemAD(props.idItemAD)
-            props.setScreen('editsuccess')}
-          },
+            props.setIdItem(props.idItem)
+            props.setScreen('editsuccess')
+          }
+            
+            },
           {
             key: 'Late',
             text: 'En retard',
             iconProps: { iconName: 'Clock' },
             onClick: function() {
             const upStatus = updateStatus("En retard")
-            props.setIdItemAD(props.idItemAD)
-            props.setScreen('editsuccess')}
-          },
+            props.setIdItem(props.idItem)
+            props.setScreen('editsuccess')
+          }
+            },
           {
             key: 'Finished',
             text: 'Terminée',
             iconProps: { iconName: 'CheckMark' },
             onClick: function() {
             const upStatus = updateStatus("Terminée")
-            props.setIdItemAD(props.idItemAD)
-            props.setScreen('editsuccess')}
-          },
+            props.setIdItem(props.idItem)
+            props.setScreen('editsuccess')
+          }
+            },
         ],
       };
 
     return (
-        <DefaultButton text="Modifier l'état" menuProps={menuProps} />
+        <DefaultButton text="Modifier l'état" className={styles.btnEdit} menuProps={menuProps} />
     )
 }

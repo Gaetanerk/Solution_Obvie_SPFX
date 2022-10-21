@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from './Metracom.module.scss';
+import styles from '../Metracom.module.scss';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import { TextField } from '@fluentui/react/lib/TextField';
 import { PeoplePicker, PrincipalType } from "@pnp/spfx-controls-react/lib/PeoplePicker";
@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react'
 import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/items";
-import { BtnReturnMeeting } from './BtnReturnMeeting';
+import { BtnReturnMeeting } from '../Meeting/BtnReturnMeeting';
 
 export function FormEditAD(props) {         
     
