@@ -26,7 +26,7 @@ export function BtnMeeting(props) {
         }
       };
       
-  console.log('ok2');
+  console.log('ok8');
 
   const menuProps: IContextualMenuProps = {
     items: [
@@ -75,8 +75,9 @@ export function BtnMeeting(props) {
   
   return (
     <div>
-    <Stack className={styles.btnMeeting}>
+    <Stack>
         <DefaultButton 
+          className={styles.btnMeeting} 
           text="Voir les réunions"
           menuProps={menuProps}
           />
